@@ -1,10 +1,10 @@
 import { HttpClient, HttpClientRequest } from "@effect/platform";
-import * as Context from "effect/Context";
+import { Tag } from "effect/Context";
 import { Effect } from "effect";
-import { ConfigService, makeConfigService } from "./config";
+import { ConfigService } from "./config";
 import { API_URL } from "../constants";
 
-export class ClientService extends Context.Tag(
+export class ClientService extends Tag(
   "@lejeunerenard/ballchasing-api/ClientService"
 )<ClientService, { readonly client: Effect.Effect<HttpClient.HttpClient> }>() {}
 

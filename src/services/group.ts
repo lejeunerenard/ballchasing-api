@@ -1,12 +1,11 @@
 import {
-  HttpClient,
   HttpClientRequest,
   HttpClientResponse,
   HttpClientError,
   HttpBody,
 } from "@effect/platform";
-import * as Context from "effect/Context";
-import * as ParseResult from "effect/ParseResult";
+import { GenericTag } from "effect/Context";
+import { ParseError } from "effect/ParseResult";
 import { Effect } from "effect";
 import { ClientService } from "./client";
 import { PaginatedResponse } from "../schema/pagination";
@@ -30,7 +29,7 @@ export interface GroupService {
     readonly GroupSummary[],
     | HttpClientError.HttpClientError
     | HttpBody.HttpBodyError
-    | ParseResult.ParseError
+    | ParseError
   >;
   readonly get: (
     id: string
@@ -38,11 +37,11 @@ export interface GroupService {
     Group,
     | HttpClientError.HttpClientError
     | HttpBody.HttpBodyError
-    | ParseResult.ParseError
+    | ParseError
   >;
 }
 
-export const GroupService = Context.GenericTag<GroupService>(
+export const GroupService = GenericTag<GroupService>(
   "@lejeunerenard/ballchasing-api/GroupService"
 );
 

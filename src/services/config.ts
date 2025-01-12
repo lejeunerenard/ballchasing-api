@@ -1,7 +1,7 @@
-import * as Context from "effect/Context";
+import { Tag } from "effect/Context";
 import { Effect } from "effect";
 
-export class ConfigService extends Context.Tag(
+export class ConfigService extends Tag(
   "@lejeunerenard/ballchasing-api/ConfigService"
 )<ConfigService, { readonly authKey: string }>() {}
 
