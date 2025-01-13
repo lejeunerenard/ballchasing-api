@@ -2,7 +2,8 @@ import test from "brittle";
 import { Schema } from "effect";
 import { readFile } from "fs/promises";
 import { join } from "path";
-import { Replay, ReplaySummary, Platform } from "../../src/schema/replay";
+import { Platform } from "../../src/schema/accounts";
+import { Replay, ReplaySummary } from "../../src/schema/replay";
 
 test("schema replay - platform", (t) => {
   t.is(Schema.decodeUnknownSync(Platform)("XBOX"), "xbox");

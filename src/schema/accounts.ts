@@ -1,13 +1,27 @@
-import { HttpClientResponse } from "@effect/platform";
-import { Schema } from "effect";
+import { Schema as S } from "effect";
 
-export class SteamAccount extends Schema.Class<SteamAccount>("SteamAccount")({
-  steam_id: Schema.String,
-  name: Schema.String,
-  profile_url: Schema.String,
-  avatar: Schema.String,
-  avatar_full: Schema.optional(Schema.String),
-  avatar_medium: Schema.optional(Schema.String),
-}) {
-  static decodeResponse = HttpClientResponse.schemaBodyJson(SteamAccount);
-}
+export const Platform = S.compose(
+  S.Lowercase,
+  S.Literal("ps4", "epic", "steam", "xbox", "psynet")
+);
+
+export const Id = S.Struct({
+  platform: Platform,
+  id: S.String,
+});
+
+export class Uploader extends S.Class<Uploader>("Uploader")({
+  steam_id: S.String,
+  name: S.String,
+  profile_url: S.String,
+  avatar: S.String,
+}) {}
+
+export class Creator extends S.Class<Creator>("Creator")({
+  steam_id: S.String,
+  name: S.String,
+  profile_url: S.String,
+  avatar: S.String,
+  avatar_full: S.String,
+  avatar_medium: S.String,
+}) {}

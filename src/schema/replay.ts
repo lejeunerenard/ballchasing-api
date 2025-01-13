@@ -1,486 +1,202 @@
-import { HttpClientResponse } from "@effect/platform";
-import { Schema } from "effect";
-import { SteamAccount } from "./accounts";
+import { Schema as S } from "effect";
+import {
+  Rank,
+  StatsClass,
+  Demo,
+  StatsPositioning,
+  Core,
+  Boost,
+  Movement,
+} from "./common";
+import { Uploader, Id } from "./accounts";
+import { GroupStub } from "./group";
 
-class Rank extends Schema.Class<Rank>("Rank")({
-  id: Schema.String,
-  tier: Schema.Number,
-  division: Schema.Number,
-  name: Schema.String,
+const TeamColors = S.Literal("blue", "orange");
+
+export class Camera extends S.Class<Camera>("Camera")({
+  fov: S.Number,
+  height: S.Number,
+  pitch: S.Number,
+  distance: S.Number,
+  stiffness: S.Number,
+  swivel_speed: S.Number,
+  transition_speed: S.Number,
 }) {}
 
-class CameraSettings extends Schema.Class<CameraSettings>("CameraSettings")({
-  fov: Schema.Number,
-  height: Schema.Number,
-  pitch: Schema.Number,
-  distance: Schema.Number,
-  stiffness: Schema.Number,
-  swivel_speed: Schema.Number,
-  transition_speed: Schema.Number,
+export class Ball extends S.Class<Ball>("Ball")({
+  possession_time: S.Number,
+  time_in_side: S.Number,
 }) {}
 
-const TeamColors = Schema.Literal("blue", "orange");
-export const Platform = Schema.compose(
-  Schema.Lowercase,
-  Schema.Literal("ps4", "epic", "steam", "xbox", "psynet")
+const BoostWOPercent = Boost.pipe(
+  S.omit(
+    "percent_zero_boost",
+    "percent_full_boost",
+    "percent_boost_0_25",
+    "percent_boost_25_50",
+    "percent_boost_50_75",
+    "percent_boost_75_100"
+  )
 );
 
-export class PlatformInfo extends Schema.Class<PlatformInfo>("PlatformInfo")({
-  name: Schema.String,
-  platform: Platform,
-  id: Schema.String,
+export class Stats extends S.Class<Stats>("Stats")({
+  ball: Ball,
+  core: Core,
+  boost: BoostWOPercent,
+  movement: Movement.pipe(
+    S.omit(
+      "avg_speed",
+      "avg_powerslide_duration",
+      "avg_speed_percentage",
+      "percent_slow_speed",
+      "percent_boost_speed",
+      "percent_supersonic_speed",
+      "percent_ground",
+      "percent_low_air",
+      "percent_high_air"
+    )
+  ),
+  positioning: StatsPositioning.pipe(
+    S.omit(
+      "avg_distance_to_ball",
+      "avg_distance_to_ball_possession",
+      "avg_distance_to_ball_no_possession",
+      "time_most_back",
+      "time_most_forward",
+      "time_closest_to_ball",
+      "time_farthest_from_ball",
+      "percent_defensive_third",
+      "percent_offensive_third",
+      "percent_neutral_third",
+      "percent_defensive_half",
+      "percent_offensive_half",
+      "percent_behind_ball",
+      "percent_infront_ball",
+      "avg_distance_to_mates",
+      "percent_most_back",
+      "percent_most_forward",
+      "percent_closest_to_ball",
+      "percent_farthest_from_ball"
+    )
+  ),
+  demo: Demo,
 }) {}
 
-export class StatsCore extends Schema.Class<StatsCore>("StatsCore")({
-  shots: Schema.Number,
-  shots_against: Schema.Number,
-  goals: Schema.Number,
-  goals_against: Schema.Number,
-  saves: Schema.Number,
-  assists: Schema.Number,
-  score: Schema.Number,
-  mvp: Schema.optional(Schema.Number),
-  shooting_percentage: Schema.Number,
+export class Server extends S.Class<Server>("Server")({
+  name: S.String,
+  region: S.String,
 }) {}
 
-class PlayerStatsCore extends Schema.Class<PlayerStatsCore>("PlayerStatsCore")({
-  ...StatsCore.fields,
-  mvp: Schema.Boolean,
-}) {}
-
-class StatsBoost extends Schema.Class<StatsBoost>("StatsBoost")({
-  bpm: Schema.Number,
-  bcpm: Schema.Number,
-  avg_amount: Schema.Number,
-  amount_collected: Schema.Number,
-  amount_stolen: Schema.Number,
-  amount_collected_big: Schema.Number,
-  amount_stolen_big: Schema.Number,
-  amount_collected_small: Schema.Number,
-  amount_stolen_small: Schema.Number,
-  count_collected_big: Schema.Number,
-  count_stolen_big: Schema.Number,
-  count_collected_small: Schema.Number,
-  count_stolen_small: Schema.Number,
-  time_zero_boost: Schema.Number,
-  time_full_boost: Schema.Number,
-  amount_overfill: Schema.Number,
-  amount_overfill_stolen: Schema.Number,
-  amount_used_while_supersonic: Schema.Number,
-  time_boost_0_25: Schema.Number,
-  time_boost_25_50: Schema.Number,
-  time_boost_50_75: Schema.Number,
-  time_boost_75_100: Schema.Number,
-}) {}
-
-class PlayerStatsBoost extends Schema.Class<PlayerStatsBoost>(
-  "PlayerStatsBoost"
+export class TeamReplayPlayer extends S.Class<TeamReplayPlayer>(
+  "TeamReplayPlayer"
 )({
-  ...StatsBoost.fields,
-  percent_zero_boost: Schema.optional(Schema.Number),
-  percent_full_boost: Schema.optional(Schema.Number),
-  percent_boost_0_25: Schema.optional(Schema.Number),
-  percent_boost_25_50: Schema.optional(Schema.Number),
-  percent_boost_50_75: Schema.optional(Schema.Number),
-  percent_boost_75_100: Schema.optional(Schema.Number),
+  start_time: S.Number,
+  end_time: S.Number,
+  name: S.String,
+  mvp: S.optional(S.Boolean),
+  id: Id,
+  car_id: S.Number,
+  car_name: S.String,
+  camera: Camera,
+  steering_sensitivity: S.Number,
+  stats: StatsClass,
 }) {}
 
-class StatsMovement extends Schema.Class<StatsMovement>("StatsMovement")({
-  total_distance: Schema.Number,
-  time_supersonic_speed: Schema.Number,
-  time_boost_speed: Schema.Number,
-  time_slow_speed: Schema.Number,
-  time_ground: Schema.Number,
-  time_low_air: Schema.Number,
-  time_high_air: Schema.Number,
-  time_powerslide: Schema.Number,
-  count_powerslide: Schema.Number,
-}) {}
-
-class PlayerStatsMovement extends Schema.Class<PlayerStatsMovement>(
-  "PlayerStatsMovement"
-)({
-  ...StatsMovement.fields,
-  avg_speed: Schema.Number,
-  avg_powerslide_duration: Schema.Number,
-  avg_speed_percentage: Schema.Number,
-  percent_slow_speed: Schema.Number,
-  percent_boost_speed: Schema.Number,
-  percent_supersonic_speed: Schema.Number,
-  percent_ground: Schema.Number,
-  percent_low_air: Schema.Number,
-  percent_high_air: Schema.Number,
-}) {}
-
-class StatsPositioning extends Schema.Class<StatsPositioning>(
-  "StatsPositioning"
-)({
-  time_defensive_third: Schema.Number,
-  time_neutral_third: Schema.Number,
-  time_offensive_third: Schema.Number,
-  time_defensive_half: Schema.Number,
-  time_offensive_half: Schema.Number,
-  time_behind_ball: Schema.Number,
-  time_infront_ball: Schema.Number,
-}) {}
-
-class PlayerStatsPositioningCommon extends Schema.Class<PlayerStatsPositioningCommon>(
-  "PlayerStatsPositioningCommon"
-)({
-  ...StatsPositioning.fields,
-  avg_distance_to_ball: Schema.Number,
-  avg_distance_to_ball_possession: Schema.Number,
-  avg_distance_to_ball_no_possession: Schema.Number,
-  time_most_back: Schema.Number,
-  time_most_forward: Schema.Number,
-  time_closest_to_ball: Schema.Number,
-  time_farthest_from_ball: Schema.Number,
-  percent_defensive_third: Schema.Number,
-  percent_offensive_third: Schema.Number,
-  percent_neutral_third: Schema.Number,
-  percent_defensive_half: Schema.Number,
-  percent_offensive_half: Schema.Number,
-  percent_behind_ball: Schema.Number,
-  percent_infront_ball: Schema.Number,
-  goals_against_while_last_defender: Schema.optional(Schema.Number),
-}) {}
-
-class PlayerStatsPositioning extends Schema.Class<PlayerStatsPositioning>(
-  "PlayerStatsPositioning"
-)({
-  ...PlayerStatsPositioningCommon.fields,
-  avg_distance_to_mates: Schema.Number,
-  percent_most_back: Schema.Number,
-  percent_most_forward: Schema.Number,
-  percent_closest_to_ball: Schema.Number,
-  percent_farthest_from_ball: Schema.Number,
-}) {}
-
-const PlayerTeamStatsPositioning = PlayerStatsPositioningCommon;
-
-class StatsDemo extends Schema.Class<StatsDemo>("StatsDemo")({
-  inflicted: Schema.Number,
-  taken: Schema.Number,
-}) {}
-
-export const GameAveragStats = Schema.Struct({
-  core: StatsCore,
-  boost: Schema.Struct({
-    bpm: Schema.Number,
-    bcpm: Schema.Number,
-    avg_amount: Schema.Number,
-    amount_collected: Schema.Number,
-    amount_stolen: Schema.Number,
-    amount_collected_big: Schema.Number,
-    amount_stolen_big: Schema.Number,
-    amount_collected_small: Schema.Number,
-    amount_stolen_small: Schema.Number,
-    count_collected_big: Schema.Number,
-    count_stolen_big: Schema.Number,
-    count_collected_small: Schema.Number,
-    count_stolen_small: Schema.Number,
-    time_zero_boost: Schema.Number,
-    percent_zero_boost: Schema.Number,
-    time_full_boost: Schema.Number,
-    percent_full_boost: Schema.Number,
-    amount_overfill: Schema.Number,
-    amount_overfill_stolen: Schema.Number,
-    amount_used_while_supersonic: Schema.Number,
-    time_boost_0_25: Schema.Number,
-    time_boost_25_50: Schema.Number,
-    time_boost_50_75: Schema.Number,
-    time_boost_75_100: Schema.Number,
-    percent_boost_0_25: Schema.Number,
-    percent_boost_25_50: Schema.Number,
-    percent_boost_50_75: Schema.Number,
-    percent_boost_75_100: Schema.Number,
-  }),
-  movement: Schema.Struct({
-    avg_speed: Schema.Number,
-    total_distance: Schema.Number,
-    time_supersonic_speed: Schema.Number,
-    time_boost_speed: Schema.Number,
-    time_slow_speed: Schema.Number,
-    time_ground: Schema.Number,
-    time_low_air: Schema.Number,
-    time_high_air: Schema.Number,
-    time_powerslide: Schema.Number,
-    count_powerslide: Schema.Number,
-    avg_powerslide_duration: Schema.Number,
-    avg_speed_percentage: Schema.Number,
-    percent_slow_speed: Schema.Number,
-    percent_boost_speed: Schema.Number,
-    percent_supersonic_speed: Schema.Number,
-    percent_ground: Schema.Number,
-    percent_low_air: Schema.Number,
-    percent_high_air: Schema.Number,
-  }),
-  positioning: Schema.Struct({
-    time_defensive_third: Schema.Number,
-    time_neutral_third: Schema.Number,
-    time_offensive_third: Schema.Number,
-    time_defensive_half: Schema.Number,
-    time_offensive_half: Schema.Number,
-    time_behind_ball: Schema.Number,
-    time_infront_ball: Schema.Number,
-    avg_distance_to_ball: Schema.Number,
-    avg_distance_to_ball_possession: Schema.Number,
-    avg_distance_to_ball_no_possession: Schema.Number,
-    time_most_back: Schema.Number,
-    time_most_forward: Schema.Number,
-    goals_against_while_last_defender: Schema.Number,
-    time_closest_to_ball: Schema.Number,
-    time_farthest_from_ball: Schema.Number,
-    percent_defensive_third: Schema.Number,
-    percent_offensive_third: Schema.Number,
-    percent_neutral_third: Schema.Number,
-    percent_defensive_half: Schema.Number,
-    percent_offensive_half: Schema.Number,
-    percent_behind_ball: Schema.Number,
-    percent_infront_ball: Schema.Number,
-  }),
-  demo: Schema.Struct({
-    inflicted: Schema.Number,
-    taken: Schema.Number,
-  }),
-});
-
-export const CumulativeStats = Schema.Struct({
-  games: Schema.Number,
-  wins: Schema.Number,
-  win_percentage: Schema.Number,
-  play_duration: Schema.Number,
-  core: StatsCore,
-  boost: Schema.Struct({
-    amount_collected: Schema.Number,
-    amount_stolen: Schema.Number,
-    amount_collected_big: Schema.Number,
-    amount_stolen_big: Schema.Number,
-    amount_collected_small: Schema.Number,
-    amount_stolen_small: Schema.Number,
-    count_collected_big: Schema.Number,
-    count_stolen_big: Schema.Number,
-    count_collected_small: Schema.Number,
-    count_stolen_small: Schema.Number,
-    time_zero_boost: Schema.Number,
-    percentage_zero_boost: Schema.Number,
-    time_full_boost: Schema.Number,
-    percentage_full_boost: Schema.Number,
-    amount_overfill: Schema.Number,
-    amount_overfill_stolen: Schema.Number,
-    amount_used_while_supersonic: Schema.Number,
-    time_boost_0_25: Schema.Number,
-    time_boost_25_50: Schema.Number,
-    time_boost_50_75: Schema.Number,
-    time_boost_75_100: Schema.Number,
-  }),
-  movement: Schema.Struct({
-    total_distance: Schema.Number,
-    time_supersonic_speed: Schema.Number,
-    time_boost_speed: Schema.Number,
-    time_slow_speed: Schema.Number,
-    time_ground: Schema.Number,
-    time_low_air: Schema.Number,
-    time_high_air: Schema.Number,
-    time_powerslide: Schema.Number,
-    count_powerslide: Schema.Number,
-  }),
-  positioning: Schema.Struct({
-    time_defensive_third: Schema.Number,
-    time_neutral_third: Schema.Number,
-    time_offensive_third: Schema.Number,
-    time_defensive_half: Schema.Number,
-    time_offensive_half: Schema.Number,
-    time_behind_ball: Schema.Number,
-    time_infront_ball: Schema.Number,
-    avg_distance_to_ball: Schema.Number,
-    avg_distance_to_ball_possession: Schema.Number,
-    avg_distance_to_ball_no_possession: Schema.Number,
-  }),
-  demo: Schema.Struct({
-    inflicted: Schema.Number,
-    taken: Schema.Number,
-  }),
-});
-
-export class PlayerStats extends Schema.Class<PlayerStats>("PlayerStats")({
-  ...PlatformInfo.fields,
-  team: Schema.String,
-  game_average: GameAveragStats,
-  cumulative: Schema.Struct({
-    games: Schema.Number,
-    wins: Schema.Number,
-    win_percentage: Schema.Number,
-    play_duration: Schema.Number,
-    core: StatsCore,
-    boost: PlayerStatsBoost,
-    movement: PlayerStatsMovement,
-    positioning: PlayerTeamStatsPositioning,
-    demo: StatsDemo,
-  }),
-}) {}
-
-export class TeamPlayerStats extends Schema.Class<TeamPlayerStats>(
-  "TeamPlayerStats"
-)({
-  core: PlayerStatsCore,
-  boost: PlayerStatsBoost,
-  movement: PlayerStatsMovement,
-  positioning: PlayerStatsPositioning,
-  demo: StatsDemo,
-}) {}
-
-export class TeamReplayStats extends Schema.Class<TeamReplayStats>(
+export class TeamReplayStats extends S.Class<TeamReplayStats>(
   "TeamReplayStats"
 )({
   color: TeamColors,
-  name: Schema.optional(Schema.String),
-  players: Schema.Array(
-    Schema.Struct({
-      start_time: Schema.Number,
-      end_time: Schema.Number,
-      name: Schema.String,
-      mvp: Schema.optional(Schema.Boolean),
-      id: Schema.Struct({
-        platform: Platform,
-        id: Schema.String,
-      }),
-      rank: Schema.optional(Rank),
-      car_id: Schema.Number,
-      car_name: Schema.String,
-      camera: CameraSettings,
-      steering_sensitivity: Schema.Number,
-      stats: TeamPlayerStats,
-    })
-  ),
-  stats: Schema.Struct({
-    ball: Schema.Struct({
-      possession_time: Schema.Number,
-      time_in_side: Schema.Number,
-    }),
-    core: StatsCore,
-    boost: StatsBoost,
-    movement: StatsMovement,
-    positioning: StatsPositioning,
-    demo: StatsDemo,
-  }),
+  name: S.optional(S.String),
+  players: S.Array(TeamReplayPlayer),
+  stats: Stats,
 }) {}
 
-export class TeamStats extends Schema.Class<TeamStats>("TeamStats")({
-  name: Schema.String,
-  players: Schema.Array(
-    Schema.Struct({
-      ...PlatformInfo.fields,
-      team: Schema.String,
-      game_average: Schema.optional(GameAveragStats),
-    })
-  ),
-  game_average: GameAveragStats,
-  cumulative: CumulativeStats,
+export class ReplaySummaryPlayer extends S.Class<ReplaySummaryPlayer>(
+  "ReplaySummaryPlayer"
+)({
+  start_time: S.Number,
+  end_time: S.Number,
+  name: S.String,
+  id: S.partialWith(Id, { exact: true }),
+  mvp: S.optional(S.Boolean),
+  rank: S.optional(Rank),
+  score: S.Number,
 }) {}
 
-export class ReplayCommon extends Schema.Class<ReplayCommon>("ReplayCommon")({
-  id: Schema.String,
-  link: Schema.String,
-  created: Schema.String,
-  uploader: SteamAccount,
-  status: Schema.Literal("ok", "pending", "failed"),
-}) {}
-
-export class ReplayOk extends Schema.Class<ReplayOk>("ReplayOk")({
-  ...ReplayCommon.fields,
-  status: Schema.Literal("ok"),
-  rocket_league_id: Schema.String,
-  match_guid: Schema.String,
-  title: Schema.String,
-  map_code: Schema.String,
-  match_type: Schema.Literal("Online", "Private"),
-  team_size: Schema.Number,
-  playlist_id: Schema.String,
-  duration: Schema.Number,
-  overtime: Schema.Boolean,
-  overtime_seconds: Schema.optional(Schema.Number),
-  season: Schema.Number,
-  season_type: Schema.String,
-  date: Schema.String,
-  date_has_timezone: Schema.Boolean,
-  visibility: Schema.Literal("public", "unlisted", "private"),
-  min_rank: Schema.optional(Rank),
-  max_rank: Schema.optional(Rank),
-  groups: Schema.optional(
-    Schema.Array(
-      Schema.Struct({
-        id: Schema.String,
-        name: Schema.String,
-        link: Schema.String,
-      })
-    )
-  ),
-  blue: TeamReplayStats,
-  orange: TeamReplayStats,
-  playlist_name: Schema.String,
-  map_name: Schema.String,
-  server: Schema.Struct({
-    name: Schema.String,
-    region: Schema.String,
-  }),
-}) {}
-
-export class ReplayPending extends Schema.Class<ReplayPending>("ReplayPending")(
-  {
-    ...ReplayCommon.fields,
-    status: Schema.Literal("pending"),
-  }
-) {}
-
-export class ReplayFailed extends Schema.Class<ReplayFailed>("ReplayFailed")({
-  ...ReplayCommon.fields,
-  status: Schema.Literal("failed"),
-}) {}
-
-export const Replay = Schema.Union(ReplayOk, ReplayPending, ReplayFailed);
-export type Replay = typeof Replay.Type;
-
-class ReplaySummaryTeamStats extends Schema.Class<ReplaySummaryTeamStats>(
+export class ReplaySummaryTeamStats extends S.Class<ReplaySummaryTeamStats>(
   "ReplaySummaryTeamStats"
 )({
-  name: Schema.optional(Schema.String),
-  goals: Schema.optional(Schema.Number),
-  players: Schema.Array(
-    Schema.Struct({
-      start_time: Schema.Number,
-      end_time: Schema.Number,
-      name: Schema.String,
-      mvp: Schema.optional(Schema.Boolean),
-      id: Schema.Struct({
-        platform: Schema.optional(Platform),
-        id: Schema.optional(Schema.String),
-      }),
-      score: Schema.Number,
-      rank: Schema.optional(Rank),
-    })
-  ),
+  name: S.optional(S.String),
+  goals: S.optional(S.Number),
+  players: S.Array(ReplaySummaryPlayer),
 }) {}
 
-export const ReplaySummary = Schema.Struct({
-  ...ReplayOk.fields,
-
-  // Added
-  date_has_tz: Schema.Boolean,
-  replay_title: Schema.String,
-
-  // Overrides
+export class ReplaySummary extends S.Class<ReplaySummary>("ReplaySummary")({
+  id: S.String,
+  link: S.String,
+  rocket_league_id: S.String,
+  replay_title: S.String,
+  map_code: S.String,
+  map_name: S.String,
+  playlist_id: S.String,
+  playlist_name: S.String,
+  duration: S.Number,
+  overtime: S.Boolean,
+  season: S.Number,
+  season_type: S.String,
+  date: S.String,
+  date_has_tz: S.Boolean,
+  visibility: S.String,
+  created: S.String,
+  min_rank: S.optional(Rank),
+  max_rank: S.optional(Rank),
+  uploader: Uploader,
+  groups: S.optional(S.Array(GroupStub)),
   blue: ReplaySummaryTeamStats,
   orange: ReplaySummaryTeamStats,
-}).pipe(
-  Schema.omit(
-    "date_has_timezone", // renamed to date_has_tz by adding in above
-    "status",
-    "match_guid",
-    "title",
-    "match_type",
-    "team_size",
-    "server"
-  )
-);
-export type ReplaySummary = typeof ReplaySummary.Type;
+  overtime_seconds: S.optional(S.Number),
+}) {}
+
+export class ReplayCommon extends S.Class<ReplayCommon>("ReplayCommon")({
+  id: S.String,
+  link: S.String,
+  created: S.String,
+  uploader: Uploader,
+}) {}
+
+export class ReplayOk extends S.Class<ReplayOk>("ReplayOk")({
+  ...ReplayCommon.fields,
+  status: S.Literal("ok"),
+  rocket_league_id: S.String,
+  match_guid: S.String,
+  title: S.String,
+  map_code: S.String,
+  match_type: S.Literal("Online", "Private"),
+  team_size: S.Number,
+  playlist_id: S.String,
+  duration: S.Number,
+  overtime: S.Boolean,
+  season: S.Number,
+  season_type: S.String,
+  date: S.String,
+  date_has_timezone: S.Boolean,
+  visibility: S.Literal("public", "unlisted", "private"),
+  blue: TeamReplayStats,
+  orange: TeamReplayStats,
+  playlist_name: S.String,
+  map_name: S.String,
+  server: Server,
+}) {}
+
+export class ReplayPending extends S.Class<ReplayPending>("ReplayPending")({
+  ...ReplayCommon.fields,
+  status: S.Literal("pending"),
+}) {}
+
+export class ReplayFailed extends S.Class<ReplayFailed>("ReplayFailed")({
+  ...ReplayCommon.fields,
+  status: S.Literal("failed"),
+}) {}
+
+export const Replay = S.Union(ReplayOk, ReplayPending, ReplayFailed);
+export type Replay = typeof Replay.Type;
