@@ -1,6 +1,7 @@
 import { HttpClientResponse } from "@effect/platform";
 import { Schema } from "effect";
 import { SteamAccount } from "./accounts";
+import { PlayerStats, TeamStats } from "./replay";
 
 export class GroupInfo extends Schema.Class<GroupInfo>("GroupInfo")({
   id: Schema.String,
@@ -10,6 +11,8 @@ export class GroupInfo extends Schema.Class<GroupInfo>("GroupInfo")({
   player_identification: Schema.String,
   team_identification: Schema.String,
   shared: Schema.Boolean,
+  players: Schema.Array(PlayerStats),
+  teams: Schema.Array(TeamStats)
 }) {}
 
 export class Group extends Schema.Class<Group>("Group")({
