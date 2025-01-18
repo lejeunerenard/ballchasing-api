@@ -14,18 +14,18 @@ import { GroupStub } from "./group";
 const TeamColors = S.Literal("blue", "orange");
 
 export class Camera extends S.Class<Camera>("Camera")({
-  fov: S.Number,
-  height: S.Number,
-  pitch: S.Number,
-  distance: S.Number,
-  stiffness: S.Number,
-  swivel_speed: S.Number,
-  transition_speed: S.Number,
+  fov: S.Finite,
+  height: S.Finite,
+  pitch: S.Finite,
+  distance: S.Finite,
+  stiffness: S.Finite,
+  swivel_speed: S.Finite,
+  transition_speed: S.Finite,
 }) {}
 
 export class Ball extends S.Class<Ball>("Ball")({
-  possession_time: S.Number,
-  time_in_side: S.Number,
+  possession_time: S.Finite,
+  time_in_side: S.Finite,
 }) {}
 
 const BoostWOPercent = Boost.pipe(
@@ -90,15 +90,15 @@ export class Server extends S.Class<Server>("Server")({
 export class TeamReplayPlayer extends S.Class<TeamReplayPlayer>(
   "TeamReplayPlayer"
 )({
-  start_time: S.Number,
-  end_time: S.Number,
+  start_time: S.Finite,
+  end_time: S.Finite,
   name: S.String,
   mvp: S.optional(S.Boolean),
   id: Id,
-  car_id: S.Number,
+  car_id: S.Finite,
   car_name: S.String,
   camera: Camera,
-  steering_sensitivity: S.Number,
+  steering_sensitivity: S.Finite,
   stats: StatsClass,
 }) {}
 
@@ -114,20 +114,20 @@ export class TeamReplayStats extends S.Class<TeamReplayStats>(
 export class ReplaySummaryPlayer extends S.Class<ReplaySummaryPlayer>(
   "ReplaySummaryPlayer"
 )({
-  start_time: S.Number,
-  end_time: S.Number,
+  start_time: S.Finite,
+  end_time: S.Finite,
   name: S.String,
   id: S.partialWith(Id, { exact: true }),
   mvp: S.optional(S.Boolean),
   rank: S.optional(Rank),
-  score: S.Number,
+  score: S.Finite,
 }) {}
 
 export class ReplaySummaryTeamStats extends S.Class<ReplaySummaryTeamStats>(
   "ReplaySummaryTeamStats"
 )({
   name: S.optional(S.String),
-  goals: S.optional(S.Number),
+  goals: S.optional(S.Finite),
   players: S.Array(ReplaySummaryPlayer),
 }) {}
 
@@ -140,9 +140,9 @@ export class ReplaySummary extends S.Class<ReplaySummary>("ReplaySummary")({
   map_name: S.String,
   playlist_id: S.String,
   playlist_name: S.String,
-  duration: S.Number,
+  duration: S.Finite,
   overtime: S.Boolean,
-  season: S.Number,
+  season: S.Finite,
   season_type: S.String,
   date: S.String,
   date_has_tz: S.Boolean,
@@ -154,7 +154,7 @@ export class ReplaySummary extends S.Class<ReplaySummary>("ReplaySummary")({
   groups: S.optional(S.Array(GroupStub)),
   blue: ReplaySummaryTeamStats,
   orange: ReplaySummaryTeamStats,
-  overtime_seconds: S.optional(S.Number),
+  overtime_seconds: S.optional(S.Finite),
 }) {}
 
 export class ReplayCommon extends S.Class<ReplayCommon>("ReplayCommon")({
@@ -172,11 +172,11 @@ export class ReplayOk extends S.Class<ReplayOk>("ReplayOk")({
   title: S.String,
   map_code: S.String,
   match_type: S.Literal("Online", "Private"),
-  team_size: S.Number,
+  team_size: S.Finite,
   playlist_id: S.String,
-  duration: S.Number,
+  duration: S.Finite,
   overtime: S.Boolean,
-  season: S.Number,
+  season: S.Finite,
   season_type: S.String,
   date: S.String,
   date_has_timezone: S.Boolean,

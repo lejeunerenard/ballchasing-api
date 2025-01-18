@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rm -rf dist/*",
     "build": "npm run clean && tsc",
-    "test": "NODE_OPTIONS='--import=tsx' brittle tests/**/*.ts"
+    "test": "NODE_OPTIONS='--import=tsx' brittle tests/**/*.ts tests/*.ts"
   },
   "keywords": [],
   "author": "Sean Zellmer <sean@lejeunerenard.com> (http://lejeunerenard.com/)",
@@ -16,6 +16,7 @@
     "@types/brittle": "^3.5.0",
     "@types/node": "^22.10.5",
     "brittle": "^3.7.0",
+    "nock": "^14.0.0-beta.19",
     "prettier": "^3.4.2",
     "prettier-config-standard": "^7.0.0",
     "tsx": "^4.19.2",

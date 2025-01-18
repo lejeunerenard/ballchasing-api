@@ -20,21 +20,21 @@ export class TeamPlayer extends S.Class<TeamPlayer>("TeamPlayer")({
 export class CumulativePositioning extends S.Class<CumulativePositioning>(
   "CumulativePositioning"
 )({
-  time_defensive_third: S.Number,
-  time_neutral_third: S.Number,
-  time_offensive_third: S.Number,
-  time_defensive_half: S.Number,
-  time_offensive_half: S.Number,
-  time_behind_ball: S.Number,
-  time_infront_ball: S.Number,
-  avg_distance_to_ball: S.Number,
-  avg_distance_to_ball_possession: S.Number,
-  avg_distance_to_ball_no_possession: S.Number,
+  time_defensive_third: S.Finite,
+  time_neutral_third: S.Finite,
+  time_offensive_third: S.Finite,
+  time_defensive_half: S.Finite,
+  time_offensive_half: S.Finite,
+  time_behind_ball: S.Finite,
+  time_infront_ball: S.Finite,
+  avg_distance_to_ball: S.Finite,
+  avg_distance_to_ball_possession: S.Finite,
+  avg_distance_to_ball_no_possession: S.Finite,
 }) {}
 
 export class CoreSummary extends S.Class<CoreSummary>("CoreSummary")({
   ...Core.fields,
-  mvp: S.optional(S.Number),
+  mvp: S.optional(S.Finite),
 }) {}
 
 export class StatsClassSummary extends S.Class<StatsClassSummary>(
@@ -60,8 +60,8 @@ export class GroupSummary extends S.Class<GroupSummary>("GroupSummary")({
   created: S.String,
   player_identification: S.String,
   team_identification: S.String,
-  direct_replays: S.Number,
-  indirect_replays: S.Number,
+  direct_replays: S.Finite,
+  indirect_replays: S.Finite,
   shared: S.Boolean,
   user: Uploader,
 }) {}
@@ -75,10 +75,10 @@ export class GroupStub extends S.Class<GroupStub>("GroupStub")({
 export class PlayerCumulative extends S.Class<PlayerCumulative>(
   "PlayerCumulative"
 )({
-  games: S.Number,
-  wins: S.Number,
-  win_percentage: S.Number,
-  play_duration: S.Number,
+  games: S.Finite,
+  wins: S.Finite,
+  win_percentage: S.Finite,
+  play_duration: S.Finite,
   core: CoreSummary,
   boost: Boost,
   movement: Movement,
@@ -104,10 +104,10 @@ export class GroupPlayer extends S.Class<GroupPlayer>("GroupPlayer")({
 }) {}
 
 export class TeamCumulative extends S.Class<TeamCumulative>("TeamCumulative")({
-  games: S.Number,
-  wins: S.Number,
-  win_percentage: S.Number,
-  play_duration: S.Number,
+  games: S.Finite,
+  wins: S.Finite,
+  win_percentage: S.Finite,
+  play_duration: S.Finite,
   core: Core,
   boost: Boost.pipe(
     S.omit(
