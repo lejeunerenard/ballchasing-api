@@ -38,7 +38,7 @@ type Playlist =
 
 type MatchResult = "win" | "loss";
 
-type ReplayListOpts = (
+export type ReplayListOpts = (
   | {
       "player-name": string[];
     }

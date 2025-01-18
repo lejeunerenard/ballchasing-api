@@ -11,7 +11,7 @@ import { ClientService } from "./client";
 import { PaginatedResponse } from "../schema/pagination";
 import { Group, GroupSummary } from "../schema/group";
 
-type GroupListOpts = {
+export type GroupListOpts = {
   name?: string;
   creator?: string;
   group?: string;
