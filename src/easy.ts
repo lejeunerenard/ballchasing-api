@@ -1,7 +1,7 @@
 import { FetchHttpClient } from "@effect/platform";
 import { Effect, Layer } from "effect";
 import { compose } from "effect/Function";
-import { Client, Group, Replay, Config } from "./index";
+import { client as Client, group as Group, replay as Replay, config as Config } from "./index";
 
 export function getClient (authKey: string) {
   const ConfigLive = Layer.succeed(Config.ConfigService, { authKey });
