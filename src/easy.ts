@@ -28,11 +28,11 @@ export function getClient (authKey: string) {
     return {
       groups: {
         get: (x: string) => pipe(x, groups.get, Effect.runPromise),
-        list: (x: Group.GroupListOpts) => pipe(x, groups.list, Effect.runPromise)
+        list: (x?: Group.GroupListOpts) => pipe(x, groups.list, Effect.runPromise)
       },
       replays: {
         get: (x: string) => pipe(x, replays.get, Effect.runPromise),
-        list: (x: Replay.ReplayListOpts) => pipe(x, replays.list, Effect.runPromise)
+        list: (x?: Replay.ReplayListOpts) => pipe(x, replays.list, Effect.runPromise)
       }
     }
   }).pipe(Effect.scoped, Effect.provide(EndpointsLive));
