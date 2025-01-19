@@ -7,60 +7,31 @@ A Typescript client library for querying
 ## Usage
 
 ```typescript
-import { Client, Group, Replay, Config } from "@lejeunerenard/ballchasing-api";
-import { Effect, Layer } from "effect";
-import { FetchHttpClient } from "@effect/platform";
+import { getClient } from "@lejeunerenard/ballchasing-api/easy";
 
-const ConfigLive = Layer.succeed(Config.ConfigService, {
-  authKey: "YOUR_AUTH_KEY",
+const client = await getClient("YOUR_AUTH_KEY");
+
+// Single Group
+const group = await client.groups.get("2v2-w-scott-2023-12-20-kunazcz10y");
+console.log("Single group", group);
+
+// Group List
+const groups = await client.groups.list({
+  creator: "76561197987055788", // SteamID
 });
-const ClientServiceLive = Layer.effect(
-  Client.ClientService,
-  Client.makeClientService,
-).pipe(Layer.provide(FetchHttpClient.layer), Layer.provide(ConfigLive));
+console.log("Groups", groups);
 
-const GroupServiceLive = Layer.effect(
-  Group.GroupService,
-  Group.makeGroupService,
-).pipe(Layer.provide(ClientServiceLive));
+// Replay list
+const meId = "epic:9152ab3ef0bd44b59de47ca639ca7010";
+const replays = await client.replays.list({
+  uploader: "me",
+  "player-id": [meId],
+});
+console.log("Replays", replays);
 
-const ReplayServiceLive = Layer.effect(
-  Replay.ReplayService,
-  Replay.makeReplayService,
-).pipe(Layer.provide(ClientServiceLive));
-
-const EndpointsLive = Layer.merge(GroupServiceLive, ReplayServiceLive);
-
-const program = Effect.gen(function* () {
-  const groups = yield* Group.GroupService;
-
-  // Single Group
-  const resGroup = yield* groups.get("2v2-w-scott-2023-12-20-kunazcz10y");
-  console.log("Single group", resGroup);
-
-  // Group List
-  const res = yield* groups.list({
-    creator: "76561197987055788", // SteamID
-  });
-  console.log("Groups", res);
-
-  const meId = "epic:9152ab3ef0bd44b59de47ca639ca7010";
-
-  const replays = yield* Replay.ReplayService;
-
-  // Replay list
-  const res2 = yield* replays.list({
-    uploader: "me",
-    "player-id": [meId],
-  });
-  console.log("Replays", res2);
-
-  // Single Replay
-  const replay = yield* replays.get("bdc27caf-fe82-4708-9f48-4f2561f93313");
-  console.log("Replay", replay);
-}).pipe(Effect.scoped, Effect.provide(EndpointsLive));
-
-Effect.runPromise(program);
+// Single Replay
+const replay = await client.replays.get("bdc27caf-fe82-4708-9f48-4f2561f93313");
+console.log("Replay", replay);
 ```
 
 ## TODO
