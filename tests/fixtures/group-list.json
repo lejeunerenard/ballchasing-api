@@ -1,1 +1,106 @@
-{"list":[{"id":"3s-w-scott-rando-nkq6fxrssh","link":"https://ballchasing.com/api/groups/3s-w-scott-rando-nkq6fxrssh","name":"3s w/ Scott & Rando","created":"2024-04-04T06:45:38.787734Z","player_identification":"by-id","team_identification":"by-distinct-players","direct_replays":0,"indirect_replays":8,"shared":false,"user":{"steam_id":"76561197987055788","name":"lejeunerenard","profile_url":"https://steamcommunity.com/id/seanze/","avatar":"https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"}},{"id":"2v2-solo-queue-rkdz3eqwj1","link":"https://ballchasing.com/api/groups/2v2-solo-queue-rkdz3eqwj1","name":"2v2 Solo Queue","created":"2023-06-18T07:42:42.512593Z","player_identification":"by-name","team_identification":"by-distinct-players","direct_replays":50,"indirect_replays":62,"shared":false,"user":{"steam_id":"76561197987055788","name":"lejeunerenard","profile_url":"https://steamcommunity.com/id/seanze/","avatar":"https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"}},{"id":"2v2-w-scott-ncbtiftcly","link":"https://ballchasing.com/api/groups/2v2-w-scott-ncbtiftcly","name":"2v2 w/ Scott","created":"2023-06-18T07:17:53.890663Z","player_identification":"by-name","team_identification":"by-distinct-players","direct_replays":2298,"indirect_replays":3060,"shared":false,"user":{"steam_id":"76561197987055788","name":"lejeunerenard","profile_url":"https://steamcommunity.com/id/seanze/","avatar":"https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"}},{"id":"solo-queue-3s-faysnq705y","link":"https://ballchasing.com/api/groups/solo-queue-3s-faysnq705y","name":"Solo Queue 3s","created":"2023-06-15T07:36:30.591368Z","player_identification":"by-name","team_identification":"by-distinct-players","direct_replays":14,"indirect_replays":14,"shared":false,"user":{"steam_id":"76561197987055788","name":"lejeunerenard","profile_url":"https://steamcommunity.com/id/seanze/","avatar":"https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"}},{"id":"3v3-ranked-w-scott-sircrispybaco-xjeqxs1515","link":"https://ballchasing.com/api/groups/3v3-ranked-w-scott-sircrispybaco-xjeqxs1515","name":"3v3 Ranked w/ Scott & SirCrispyBacon","created":"2023-05-28T04:36:48.366376Z","player_identification":"by-name","team_identification":"by-distinct-players","direct_replays":0,"indirect_replays":7,"shared":false,"user":{"steam_id":"76561197987055788","name":"lejeunerenard","profile_url":"https://steamcommunity.com/id/seanze/","avatar":"https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"}},{"id":"3v3-w-scott-travis-1qsweqe8ef","link":"https://ballchasing.com/api/groups/3v3-w-scott-travis-1qsweqe8ef","name":"3v3 w/ Scott & Travis","created":"2023-05-27T05:38:09.191366Z","player_identification":"by-id","team_identification":"by-distinct-players","direct_replays":0,"indirect_replays":1863,"shared":true,"user":{"steam_id":"76561197987055788","name":"lejeunerenard","profile_url":"https://steamcommunity.com/id/seanze/","avatar":"https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"}}]}
+{
+  "list": [
+    {
+      "id": "3s-w-scott-rando-nkq6fxrssh",
+      "link": "https://ballchasing.com/api/groups/3s-w-scott-rando-nkq6fxrssh",
+      "name": "3s w/ Scott & Rando",
+      "created": "2024-04-04T06:45:38.787734Z",
+      "player_identification": "by-id",
+      "team_identification": "by-distinct-players",
+      "direct_replays": 0,
+      "indirect_replays": 8,
+      "shared": false,
+      "user": {
+        "steam_id": "76561197987055788",
+        "name": "lejeunerenard",
+        "profile_url": "https://steamcommunity.com/id/seanze/",
+        "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+      }
+    },
+    {
+      "id": "2v2-solo-queue-rkdz3eqwj1",
+      "link": "https://ballchasing.com/api/groups/2v2-solo-queue-rkdz3eqwj1",
+      "name": "2v2 Solo Queue",
+      "created": "2023-06-18T07:42:42.512593Z",
+      "player_identification": "by-name",
+      "team_identification": "by-distinct-players",
+      "direct_replays": 50,
+      "indirect_replays": 62,
+      "shared": false,
+      "user": {
+        "steam_id": "76561197987055788",
+        "name": "lejeunerenard",
+        "profile_url": "https://steamcommunity.com/id/seanze/",
+        "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+      }
+    },
+    {
+      "id": "2v2-w-scott-ncbtiftcly",
+      "link": "https://ballchasing.com/api/groups/2v2-w-scott-ncbtiftcly",
+      "name": "2v2 w/ Scott",
+      "created": "2023-06-18T07:17:53.890663Z",
+      "player_identification": "by-name",
+      "team_identification": "by-distinct-players",
+      "direct_replays": 2298,
+      "indirect_replays": 3060,
+      "shared": false,
+      "user": {
+        "steam_id": "76561197987055788",
+        "name": "lejeunerenard",
+        "profile_url": "https://steamcommunity.com/id/seanze/",
+        "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+      }
+    },
+    {
+      "id": "solo-queue-3s-faysnq705y",
+      "link": "https://ballchasing.com/api/groups/solo-queue-3s-faysnq705y",
+      "name": "Solo Queue 3s",
+      "created": "2023-06-15T07:36:30.591368Z",
+      "player_identification": "by-name",
+      "team_identification": "by-distinct-players",
+      "direct_replays": 14,
+      "indirect_replays": 14,
+      "shared": false,
+      "user": {
+        "steam_id": "76561197987055788",
+        "name": "lejeunerenard",
+        "profile_url": "https://steamcommunity.com/id/seanze/",
+        "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+      }
+    },
+    {
+      "id": "3v3-ranked-w-scott-sircrispybaco-xjeqxs1515",
+      "link": "https://ballchasing.com/api/groups/3v3-ranked-w-scott-sircrispybaco-xjeqxs1515",
+      "name": "3v3 Ranked w/ Scott & SirCrispyBacon",
+      "created": "2023-05-28T04:36:48.366376Z",
+      "player_identification": "by-name",
+      "team_identification": "by-distinct-players",
+      "direct_replays": 0,
+      "indirect_replays": 7,
+      "shared": false,
+      "user": {
+        "steam_id": "76561197987055788",
+        "name": "lejeunerenard",
+        "profile_url": "https://steamcommunity.com/id/seanze/",
+        "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+      }
+    },
+    {
+      "id": "3v3-w-scott-travis-1qsweqe8ef",
+      "link": "https://ballchasing.com/api/groups/3v3-w-scott-travis-1qsweqe8ef",
+      "name": "3v3 w/ Scott & Travis",
+      "created": "2023-05-27T05:38:09.191366Z",
+      "player_identification": "by-id",
+      "team_identification": "by-distinct-players",
+      "direct_replays": 0,
+      "indirect_replays": 1863,
+      "shared": true,
+      "user": {
+        "steam_id": "76561197987055788",
+        "name": "lejeunerenard",
+        "profile_url": "https://steamcommunity.com/id/seanze/",
+        "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+      }
+    }
+  ]
+}

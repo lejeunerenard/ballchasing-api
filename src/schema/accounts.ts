@@ -2,7 +2,7 @@ import { Schema as S } from "effect";
 
 export const Platform = S.compose(
   S.Lowercase,
-  S.Literal("ps4", "epic", "steam", "xbox", "psynet")
+  S.Literal("ps4", "epic", "steam", "xbox", "psynet"),
 );
 
 export const Id = S.Struct({

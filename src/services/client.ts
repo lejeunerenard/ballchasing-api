@@ -5,7 +5,7 @@ import { ConfigService } from "./config";
 import { API_URL } from "../constants";
 
 export class ClientService extends Tag(
-  "@lejeunerenard/ballchasing-api/ClientService"
+  "@lejeunerenard/ballchasing-api/ClientService",
 )<ClientService, { readonly client: Effect.Effect<HttpClient.HttpClient> }>() {}
 
 export const makeClientService = Effect.gen(function* () {
@@ -17,9 +17,9 @@ export const makeClientService = Effect.gen(function* () {
     HttpClient.filterStatusOk,
     HttpClient.mapRequest(HttpClientRequest.prependUrl(API_URL)),
     HttpClient.mapRequest(
-      HttpClientRequest.setHeader("Authorization", authKey)
+      HttpClientRequest.setHeader("Authorization", authKey),
     ),
-    Effect.succeed
+    Effect.succeed,
   );
 
   return ClientService.of({ client });

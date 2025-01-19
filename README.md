@@ -16,17 +16,17 @@ const ConfigLive = Layer.succeed(Config.ConfigService, {
 });
 const ClientServiceLive = Layer.effect(
   Client.ClientService,
-  Client.makeClientService
+  Client.makeClientService,
 ).pipe(Layer.provide(FetchHttpClient.layer), Layer.provide(ConfigLive));
 
 const GroupServiceLive = Layer.effect(
   Group.GroupService,
-  Group.makeGroupService
+  Group.makeGroupService,
 ).pipe(Layer.provide(ClientServiceLive));
 
 const ReplayServiceLive = Layer.effect(
   Replay.ReplayService,
-  Replay.makeReplayService
+  Replay.makeReplayService,
 ).pipe(Layer.provide(ClientServiceLive));
 
 const EndpointsLive = Layer.merge(GroupServiceLive, ReplayServiceLive);
@@ -36,7 +36,7 @@ const program = Effect.gen(function* () {
 
   // Single Group
   const resGroup = yield* groups.get("2v2-w-scott-2023-12-20-kunazcz10y");
-  console.log("Single group", resGroup)
+  console.log("Single group", resGroup);
 
   // Group List
   const res = yield* groups.list({
@@ -70,18 +70,18 @@ Effect.runPromise(program);
 
 ### Endpoints
 
-|    | Method   | URL                   | Doc Link                                                                        |
-| -- | -------- | ----------------      | -----------------------------------------------------------------------         |
-|    | `GET`    | `/`                   | [Ping](https://ballchasing.com/doc/api#ping)                                    |
-|    | `POST`   | `/v2/upload`          | [Upload](https://ballchasing.com/doc/api#upload)                                |
-| X  | `GET`    | `/replays`            | [List/Filter replays](https://ballchasing.com/doc/api#replays-replays)          |
-| X  | `GET`    | `/replays/${id}`      | [Get a specific replay](https://ballchasing.com/doc/api#replays-replay)         |
-|    | `DELETE` | `/replays/${id}`      | [Delete a replay](https://ballchasing.com/doc/api#replays-replay-delete)        |
-|    | `PATCH`  | `/replays/${id}`      | [Path a replay](https://ballchasing.com/doc/api#replays-replay-patch)           |
-|    | `GET`    | `/replays/${id}/file` | [Download replay file](https://ballchasing.com/doc/api#replays-replay-get-1)    |
-|    | `POST`   | `/groups`             | [Create a group](https://ballchasing.com/doc/api#replay-groups-groups-post)     |
-| X  | `GET`    | `/groups`             | [List/Filter groups](https://ballchasing.com/doc/api#replay-groups-groups-get)  |
-| X  | `GET`    | `/groups/${id}`       | [Get a specific group](https://ballchasing.com/doc/api#replay-groups-group-get) |
-|    | `DELETE` | `/groups/${id}`       | [Delete a group](https://ballchasing.com/doc/api#replay-groups-group-delete)    |
-|    | `PATCH`  | `/groups/${id}`       | [Patch a group](https://ballchasing.com/doc/api#replay-groups-group-patch)      |
-|    | `GET`    | `/maps`               | [Maps](https://ballchasing.com/doc/api#misc-maps-get)                           |
+|     | Method   | URL                   | Doc Link                                                                        |
+| --- | -------- | --------------------- | ------------------------------------------------------------------------------- |
+|     | `GET`    | `/`                   | [Ping](https://ballchasing.com/doc/api#ping)                                    |
+|     | `POST`   | `/v2/upload`          | [Upload](https://ballchasing.com/doc/api#upload)                                |
+| X   | `GET`    | `/replays`            | [List/Filter replays](https://ballchasing.com/doc/api#replays-replays)          |
+| X   | `GET`    | `/replays/${id}`      | [Get a specific replay](https://ballchasing.com/doc/api#replays-replay)         |
+|     | `DELETE` | `/replays/${id}`      | [Delete a replay](https://ballchasing.com/doc/api#replays-replay-delete)        |
+|     | `PATCH`  | `/replays/${id}`      | [Path a replay](https://ballchasing.com/doc/api#replays-replay-patch)           |
+|     | `GET`    | `/replays/${id}/file` | [Download replay file](https://ballchasing.com/doc/api#replays-replay-get-1)    |
+|     | `POST`   | `/groups`             | [Create a group](https://ballchasing.com/doc/api#replay-groups-groups-post)     |
+| X   | `GET`    | `/groups`             | [List/Filter groups](https://ballchasing.com/doc/api#replay-groups-groups-get)  |
+| X   | `GET`    | `/groups/${id}`       | [Get a specific group](https://ballchasing.com/doc/api#replay-groups-group-get) |
+|     | `DELETE` | `/groups/${id}`       | [Delete a group](https://ballchasing.com/doc/api#replay-groups-group-delete)    |
+|     | `PATCH`  | `/groups/${id}`       | [Patch a group](https://ballchasing.com/doc/api#replay-groups-group-patch)      |
+|     | `GET`    | `/maps`               | [Maps](https://ballchasing.com/doc/api#misc-maps-get)                           |

@@ -35,8 +35,8 @@ const BoostWOPercent = Boost.pipe(
     "percent_boost_0_25",
     "percent_boost_25_50",
     "percent_boost_50_75",
-    "percent_boost_75_100"
-  )
+    "percent_boost_75_100",
+  ),
 );
 
 export class Stats extends S.Class<Stats>("Stats")({
@@ -53,8 +53,8 @@ export class Stats extends S.Class<Stats>("Stats")({
       "percent_supersonic_speed",
       "percent_ground",
       "percent_low_air",
-      "percent_high_air"
-    )
+      "percent_high_air",
+    ),
   ),
   positioning: StatsPositioning.pipe(
     S.omit(
@@ -76,8 +76,8 @@ export class Stats extends S.Class<Stats>("Stats")({
       "percent_most_back",
       "percent_most_forward",
       "percent_closest_to_ball",
-      "percent_farthest_from_ball"
-    )
+      "percent_farthest_from_ball",
+    ),
   ),
   demo: Demo,
 }) {}
@@ -88,7 +88,7 @@ export class Server extends S.Class<Server>("Server")({
 }) {}
 
 export class TeamReplayPlayer extends S.Class<TeamReplayPlayer>(
-  "TeamReplayPlayer"
+  "TeamReplayPlayer",
 )({
   start_time: S.Finite,
   end_time: S.Finite,
@@ -103,7 +103,7 @@ export class TeamReplayPlayer extends S.Class<TeamReplayPlayer>(
 }) {}
 
 export class TeamReplayStats extends S.Class<TeamReplayStats>(
-  "TeamReplayStats"
+  "TeamReplayStats",
 )({
   color: TeamColors,
   name: S.optional(S.String),
@@ -112,7 +112,7 @@ export class TeamReplayStats extends S.Class<TeamReplayStats>(
 }) {}
 
 export class ReplaySummaryPlayer extends S.Class<ReplaySummaryPlayer>(
-  "ReplaySummaryPlayer"
+  "ReplaySummaryPlayer",
 )({
   start_time: S.Finite,
   end_time: S.Finite,
@@ -124,7 +124,7 @@ export class ReplaySummaryPlayer extends S.Class<ReplaySummaryPlayer>(
 }) {}
 
 export class ReplaySummaryTeamStats extends S.Class<ReplaySummaryTeamStats>(
-  "ReplaySummaryTeamStats"
+  "ReplaySummaryTeamStats",
 )({
   name: S.optional(S.String),
   goals: S.optional(S.Finite),

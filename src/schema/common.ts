@@ -13,7 +13,7 @@ export class Demo extends S.Class<Demo>("Demo")({
 }) {}
 
 export class StatsPositioning extends S.Class<StatsPositioning>(
-  "StatsPositioning"
+  "StatsPositioning",
 )({
   avg_distance_to_ball: S.Finite,
   avg_distance_to_ball_possession: S.Finite,

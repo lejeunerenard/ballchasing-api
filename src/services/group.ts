@@ -24,25 +24,21 @@ export type GroupListOpts = {
 
 export interface GroupService {
   readonly list: (
-    opts?: GroupListOpts
+    opts?: GroupListOpts,
   ) => Effect.Effect<
     readonly GroupSummary[],
-    | HttpClientError.HttpClientError
-    | HttpBody.HttpBodyError
-    | ParseError
+    HttpClientError.HttpClientError | HttpBody.HttpBodyError | ParseError
   >;
   readonly get: (
-    id: string
+    id: string,
   ) => Effect.Effect<
     Group,
-    | HttpClientError.HttpClientError
-    | HttpBody.HttpBodyError
-    | ParseError
+    HttpClientError.HttpClientError | HttpBody.HttpBodyError | ParseError
   >;
 }
 
 export const GroupService = GenericTag<GroupService>(
-  "@lejeunerenard/ballchasing-api/GroupService"
+  "@lejeunerenard/ballchasing-api/GroupService",
 );
 
 export const makeGroupService = Effect.gen(function* () {
@@ -54,21 +50,21 @@ export const makeGroupService = Effect.gen(function* () {
   const list = (opts?: GroupListOpts) =>
     Effect.succeed(
       HttpClientRequest.get(groupEndpoint).pipe(
-        HttpClientRequest.setUrlParams(opts ?? {})
-      )
+        HttpClientRequest.setUrlParams(opts ?? {}),
+      ),
     ).pipe(
       Effect.flatMap(client.execute),
       Effect.flatMap(
-        HttpClientResponse.schemaBodyJson(PaginatedResponse(GroupSummary))
+        HttpClientResponse.schemaBodyJson(PaginatedResponse(GroupSummary)),
       ),
-      Effect.scoped
+      Effect.scoped,
     );
 
   const get = (id: string) =>
     Effect.succeed(HttpClientRequest.get(groupEndpoint + "/" + id)).pipe(
       Effect.flatMap(client.execute),
       Effect.flatMap(HttpClientResponse.schemaBodyJson(Group)),
-      Effect.scoped
+      Effect.scoped,
     );
 
   return GroupService.of({ list, get });

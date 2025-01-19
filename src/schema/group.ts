@@ -18,7 +18,7 @@ export class TeamPlayer extends S.Class<TeamPlayer>("TeamPlayer")({
 }) {}
 
 export class CumulativePositioning extends S.Class<CumulativePositioning>(
-  "CumulativePositioning"
+  "CumulativePositioning",
 )({
   time_defensive_third: S.Finite,
   time_neutral_third: S.Finite,
@@ -38,7 +38,7 @@ export class CoreSummary extends S.Class<CoreSummary>("CoreSummary")({
 }) {}
 
 export class StatsClassSummary extends S.Class<StatsClassSummary>(
-  "StatsClassSummary"
+  "StatsClassSummary",
 )({
   ...StatsClass.fields,
   core: CoreSummary,
@@ -48,8 +48,8 @@ export class StatsClassSummary extends S.Class<StatsClassSummary>(
       "percent_most_back",
       "percent_most_forward",
       "percent_closest_to_ball",
-      "percent_farthest_from_ball"
-    )
+      "percent_farthest_from_ball",
+    ),
   ),
 }) {}
 
@@ -73,7 +73,7 @@ export class GroupStub extends S.Class<GroupStub>("GroupStub")({
 }) {}
 
 export class PlayerCumulative extends S.Class<PlayerCumulative>(
-  "PlayerCumulative"
+  "PlayerCumulative",
 )({
   games: S.Finite,
   wins: S.Finite,
@@ -88,8 +88,8 @@ export class PlayerCumulative extends S.Class<PlayerCumulative>(
       "percent_most_back",
       "percent_most_forward",
       "percent_closest_to_ball",
-      "percent_farthest_from_ball"
-    )
+      "percent_farthest_from_ball",
+    ),
   ),
   demo: Demo,
 }) {}
@@ -117,8 +117,8 @@ export class TeamCumulative extends S.Class<TeamCumulative>("TeamCumulative")({
       "percent_boost_0_25",
       "percent_boost_25_50",
       "percent_boost_50_75",
-      "percent_boost_75_100"
-    )
+      "percent_boost_75_100",
+    ),
   ),
   movement: Movement.pipe(
     S.omit(
@@ -130,15 +130,15 @@ export class TeamCumulative extends S.Class<TeamCumulative>("TeamCumulative")({
       "percent_supersonic_speed",
       "percent_ground",
       "percent_low_air",
-      "percent_high_air"
-    )
+      "percent_high_air",
+    ),
   ),
   positioning: CumulativePositioning,
   demo: Demo,
 }) {}
 
 export class TeamGameAverage extends S.Class<TeamGameAverage>(
-  "TeamGameAverage"
+  "TeamGameAverage",
 )({
   core: Core,
   boost: Boost.pipe(
@@ -146,8 +146,8 @@ export class TeamGameAverage extends S.Class<TeamGameAverage>(
       "percent_boost_0_25",
       "percent_boost_25_50",
       "percent_boost_50_75",
-      "percent_boost_75_100"
-    )
+      "percent_boost_75_100",
+    ),
   ),
   movement: Movement.pipe(
     S.omit(
@@ -159,8 +159,8 @@ export class TeamGameAverage extends S.Class<TeamGameAverage>(
       "percent_supersonic_speed",
       "percent_ground",
       "percent_low_air",
-      "percent_high_air"
-    )
+      "percent_high_air",
+    ),
   ),
   positioning: CumulativePositioning,
   demo: Demo,

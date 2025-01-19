@@ -61,13 +61,13 @@ export type ReplayListOpts = (
 
 export interface ReplayService {
   readonly list: (
-    opts?: ReplayListOpts
+    opts?: ReplayListOpts,
   ) => Effect.Effect<
     readonly ReplaySummary[],
     HttpClientError.HttpClientError | HttpBody.HttpBodyError | ParseError
   >;
   readonly get: (
-    id: string
+    id: string,
   ) => Effect.Effect<
     Replay,
     HttpClientError.HttpClientError | HttpBody.HttpBodyError | ParseError
@@ -75,7 +75,7 @@ export interface ReplayService {
 }
 
 export const ReplayService = GenericTag<ReplayService>(
-  "@lejeunerenard/ballchasing-api/ReplayService"
+  "@lejeunerenard/ballchasing-api/ReplayService",
 );
 
 export const makeReplayService = Effect.gen(function* () {
@@ -87,21 +87,21 @@ export const makeReplayService = Effect.gen(function* () {
   const list = (opts?: ReplayListOpts) =>
     Effect.succeed(
       HttpClientRequest.get(endpoint).pipe(
-        HttpClientRequest.setUrlParams(opts ?? {})
-      )
+        HttpClientRequest.setUrlParams(opts ?? {}),
+      ),
     ).pipe(
       Effect.flatMap(client.execute),
       Effect.flatMap(
-        HttpClientResponse.schemaBodyJson(PaginatedResponse(ReplaySummary))
+        HttpClientResponse.schemaBodyJson(PaginatedResponse(ReplaySummary)),
       ),
-      Effect.scoped
+      Effect.scoped,
     );
 
   const get = (id: string) =>
     Effect.succeed(HttpClientRequest.get(endpoint + "/" + id)).pipe(
       Effect.flatMap(client.execute),
       Effect.flatMap(HttpClientResponse.schemaBodyJson(Replay)),
-      Effect.scoped
+      Effect.scoped,
     );
 
   return ReplayService.of({ list, get });
