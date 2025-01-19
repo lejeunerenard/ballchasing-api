@@ -1,6 +1,6 @@
 {
   "name": "@lejeunerenard/ballchasing-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "packageManager": "pnpm@9.10.0",
   "scripts": {
