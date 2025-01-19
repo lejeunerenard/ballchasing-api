@@ -6,7 +6,7 @@ import {
   group as Group,
   replay as Replay,
   config as Config,
-} from "./index";
+} from "./index.js";
 
 export function getClient(authKey: string) {
   const ConfigLive = Layer.succeed(Config.ConfigService, { authKey });

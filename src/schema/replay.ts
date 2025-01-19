@@ -7,9 +7,9 @@ import {
   Core,
   Boost,
   Movement,
-} from "./common";
-import { Uploader, Id } from "./accounts";
-import { GroupStub } from "./group";
+} from "./common.js";
+import { Uploader, Id } from "./accounts.js";
+import { GroupStub } from "./group.js";
 
 const TeamColors = S.Literal("blue", "orange");
 

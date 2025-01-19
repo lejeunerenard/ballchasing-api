@@ -1,8 +1,8 @@
 import { HttpClient, HttpClientRequest } from "@effect/platform";
 import { Tag } from "effect/Context";
 import { Effect } from "effect";
-import { ConfigService } from "./config";
-import { API_URL } from "../constants";
+import { ConfigService } from "./config.js";
+import { API_URL } from "../constants.js";
 
 export class ClientService extends Tag(
   "@lejeunerenard/ballchasing-api/ClientService",

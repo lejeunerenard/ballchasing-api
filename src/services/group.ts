@@ -7,9 +7,9 @@ import {
 import { GenericTag } from "effect/Context";
 import { ParseError } from "effect/ParseResult";
 import { Effect } from "effect";
-import { ClientService } from "./client";
-import { PaginatedResponse } from "../schema/pagination";
-import { Group, GroupSummary } from "../schema/group";
+import { ClientService } from "./client.js";
+import { PaginatedResponse } from "../schema/pagination.js";
+import { Group, GroupSummary } from "../schema/group.js";
 
 export type GroupListOpts = {
   name?: string;

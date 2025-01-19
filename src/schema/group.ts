@@ -1,14 +1,13 @@
 import { Schema as S } from "effect";
 import {
-  Rank,
   StatsClass,
   Demo,
   StatsPositioning,
   Core,
   Boost,
   Movement,
-} from "./common";
-import { Uploader, Creator } from "./accounts";
+} from "./common.js";
+import { Uploader, Creator } from "./accounts.js";
 
 export class TeamPlayer extends S.Class<TeamPlayer>("TeamPlayer")({
   platform: S.String,
