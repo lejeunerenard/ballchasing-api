@@ -1,5 +1,6 @@
 import { FetchHttpClient } from "@effect/platform";
-import { Effect, Layer, pipe } from "effect";
+import { Effect, Layer } from "effect";
+import { compose } from "effect/Function";
 import { Client, Group, Replay, Config } from "./index";
 
 export function getClient (authKey: string) {
@@ -27,12 +28,12 @@ export function getClient (authKey: string) {
 
     return {
       groups: {
-        get: (x: string) => pipe(x, groups.get, Effect.runPromise),
-        list: (x?: Group.GroupListOpts) => pipe(x, groups.list, Effect.runPromise)
+        get: compose(groups.get, Effect.runPromise),
+        list: compose(groups.list, Effect.runPromise)
       },
       replays: {
-        get: (x: string) => pipe(x, replays.get, Effect.runPromise),
-        list: (x?: Replay.ReplayListOpts) => pipe(x, replays.list, Effect.runPromise)
+        get: compose(replays.get, Effect.runPromise),
+        list: compose(replays.list, Effect.runPromise)
       }
     }
   }).pipe(Effect.scoped, Effect.provide(EndpointsLive));
