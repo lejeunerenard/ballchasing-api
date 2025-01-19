@@ -11,6 +11,7 @@
     "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps",
     "check": "tsc -b tsconfig.json",
     "test": "NODE_OPTIONS='--import=tsx' brittle tests/**/*.ts tests/*.ts",
+    "lint": "prettier . --check",
     "changeset-version": "changeset version",
     "changeset-publish": "pnpm build && TEST_DIST= pnpm test && changeset publish"
   },
