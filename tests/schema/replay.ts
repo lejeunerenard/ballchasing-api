@@ -53,8 +53,8 @@ test("schema replay - supports AI bots as players", async (t) => {
       errors: "all",
     }),
   );
-  const replaySummary = Schema.decodeUnknownSync(ReplaySummary)(replay)
-  const bot = replaySummary.orange.players[2]
-  t.is(bot.name, 'Caveman')
-  t.alike(bot.id, {})
-})
+  const replaySummary = Schema.decodeUnknownSync(ReplaySummary)(replay);
+  const bot = replaySummary.orange.players[2];
+  t.is(bot.name, "Caveman");
+  t.alike(bot.id, {});
+});
