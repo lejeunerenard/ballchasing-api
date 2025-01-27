@@ -4,6 +4,7 @@ export const Platform = S.compose(
   S.Lowercase,
   S.Literal("ps4", "epic", "steam", "xbox", "psynet"),
 );
+export type Platform = typeof Platform.Type
 
 export const Id = S.Struct({
   platform: Platform,
