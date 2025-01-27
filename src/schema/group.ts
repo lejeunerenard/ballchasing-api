@@ -180,6 +180,6 @@ export class Group extends S.Class<Group>("Group")({
   team_identification: S.Literal("by-distinct-players", "by-player-clusters"),
   shared: S.Boolean,
   creator: Creator,
-  players: S.Array(GroupPlayer),
-  teams: S.Array(Team),
+  players: S.Array(GroupPlayer).pipe(S.optionalWith({ default: () => [] })),
+  teams: S.Array(Team).pipe(S.optionalWith({ default: () => [] })),
 }) {}
