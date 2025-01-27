@@ -1,5 +1,11 @@
 # @lejeunerenard/ballchasing-api
 
+## 1.1.2
+
+### Patch Changes
+
+- [`f647e1b`](https://github.com/lejeunerenard/ballchasing-api/commit/f647e1ba634e7936f94676899171863812a93570) Thanks @lejeunerenard! - Support omitting `players` & `teams` in `Group` schema.
+
 ## 1.1.1
 
 ### Patch Changes
