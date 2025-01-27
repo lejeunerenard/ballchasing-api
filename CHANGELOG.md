@@ -1,5 +1,11 @@
 # @lejeunerenard/ballchasing-api
 
+## 1.1.1
+
+### Patch Changes
+
+- [`2897470`](https://github.com/lejeunerenard/ballchasing-api/commit/2897470af9739d606c794b799bff4e5597b5e408) Thanks @lejeunerenard! - Clean up code styling.
+
 ## 1.1.0
 
 ### Minor Changes
