@@ -39,3 +39,22 @@ test("schema replay - summary", async (t) => {
     }),
   );
 });
+
+test("schema replay - supports AI bots as players", async (t) => {
+  const fixture = await readFile(
+    join(DIRNAME, "../fixtures/replay-summary-w-bot.json"),
+    "utf8",
+  );
+
+  const replay = JSON.parse(fixture);
+  t.execution(
+    Schema.decodeUnknownSync(ReplaySummary)(replay, {
+      onExcessProperty: "error",
+      errors: "all",
+    }),
+  );
+  const replaySummary = Schema.decodeUnknownSync(ReplaySummary)(replay)
+  const bot = replaySummary.orange.players[2]
+  t.is(bot.name, 'Caveman')
+  t.alike(bot.id, {})
+})

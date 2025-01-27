@@ -1,0 +1,99 @@
+{
+  "id": "6f5bedea-f0a2-4731-9ca3-651ef515081c",
+  "link": "https://ballchasing.com/api/replays/6f5bedea-f0a2-4731-9ca3-651ef515081c",
+  "rocket_league_id": "532EC8A04EAC87D42FDB0F89D698F53D",
+  "replay_title": "2025-01-11.22.56 Quixtic Casual Standard Win",
+  "map_code": "street_p",
+  "map_name": "Sovereign Heights (Dusk)",
+  "playlist_id": "unranked-standard",
+  "playlist_name": "Unranked Standard",
+  "duration": 336,
+  "overtime": false,
+  "season": 17,
+  "season_type": "free2play",
+  "date": "2025-01-11T22:56:42-06:00",
+  "date_has_tz": true,
+  "visibility": "public",
+  "created": "2025-01-12T05:00:05.888498Z",
+  "uploader": {
+    "steam_id": "76561197987055788",
+    "name": "lejeunerenard",
+    "profile_url": "https://steamcommunity.com/id/seanze/",
+    "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+  },
+  "blue": {
+    "goals": 3,
+    "players": [
+      {
+        "start_time": 0,
+        "end_time": 336.13956,
+        "name": "al dente2245",
+        "id": { "platform": "xbox", "id": "b32a46dafb010900" },
+        "mvp": true,
+        "score": 394
+      },
+      {
+        "start_time": 0,
+        "end_time": 336.13956,
+        "name": "************",
+        "id": { "platform": "ps4", "id": "************" },
+        "score": 366
+      },
+      {
+        "start_time": 0,
+        "end_time": 336.13956,
+        "name": "QuixMtic",
+        "id": {
+          "platform": "epic",
+          "id": "9152ab3ef0bd44b59de47ca639ca7010"
+        },
+        "score": 194
+      }
+    ]
+  },
+  "orange": {
+    "players": [
+      {
+        "start_time": 0,
+        "end_time": 336.13956,
+        "name": "Starbwy_",
+        "id": {
+          "platform": "epic",
+          "id": "b5bbc76bc66b4cc38dd7269b5589ae3b"
+        },
+        "score": 262
+      },
+      {
+        "start_time": 98.32181,
+        "end_time": 336.13956,
+        "name": "wrigley19",
+        "id": { "platform": "ps4", "id": "wrigley19" },
+        "score": 197
+      },
+      {
+        "start_time": 82.643364,
+        "end_time": 336.13956,
+        "name": "Caveman",
+        "id": {},
+        "score": 46
+      },
+      {
+        "start_time": 0,
+        "end_time": 101.305595,
+        "name": "xoMalii",
+        "id": { "platform": "ps4", "id": "xoMalii" },
+        "score": 10
+      },
+      {
+        "start_time": 0,
+        "end_time": 87.55181,
+        "name": "EZA AGL Bardock",
+        "id": {
+          "platform": "epic",
+          "id": "a6e4b54b479c414c9405d3f0a162e130"
+        },
+        "score": 0
+      }
+    ]
+  }
+}

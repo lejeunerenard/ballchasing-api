@@ -7,11 +7,10 @@ import {
   Boost,
   Movement,
 } from "./common.js";
-import { Uploader, Creator } from "./accounts.js";
+import { Id, Uploader, Creator } from "./accounts.js";
 
 export class TeamPlayer extends S.Class<TeamPlayer>("TeamPlayer")({
-  platform: S.String,
-  id: S.String,
+  ...Id.fields,
   name: S.String,
   team: S.String,
 }) {}
@@ -94,8 +93,7 @@ export class PlayerCumulative extends S.Class<PlayerCumulative>(
 }) {}
 
 export class GroupPlayer extends S.Class<GroupPlayer>("GroupPlayer")({
-  platform: S.String,
-  id: S.String,
+  ...Id.fields,
   name: S.String,
   team: S.String,
   cumulative: PlayerCumulative,

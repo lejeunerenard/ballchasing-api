@@ -117,6 +117,7 @@ export class ReplaySummaryPlayer extends S.Class<ReplaySummaryPlayer>(
   start_time: S.Finite,
   end_time: S.Finite,
   name: S.String,
+  // id is partial because bots have no id
   id: S.partialWith(Id, { exact: true }),
   mvp: S.optional(S.Boolean),
   rank: S.optional(Rank),
