@@ -58,3 +58,29 @@ test("schema replay - supports AI bots as players", async (t) => {
   t.is(bot.name, "Caveman");
   t.alike(bot.id, {});
 });
+
+test("schema replay - supports training replays", async (t) => {
+  const fixture = await readFile(
+    join(DIRNAME, "../fixtures/replay-training.json"),
+    "utf8",
+  );
+
+  const replay = JSON.parse(fixture);
+  const schema = Replay
+  t.execution(
+    Schema.decodeUnknownSync(schema)(replay, {
+      onExcessProperty: "error",
+      errors: "all",
+    }),
+  );
+  const replayParsed = Schema.decodeUnknownSync(schema)(replay);
+  if (replayParsed.status !== 'ok') {
+    t.fail('replay-training.json was not a ReplayOk')
+    return
+  }
+
+  t.is(replayParsed.match_type, 'Training', 'has match_type = Training')
+  t.not('playlist_id' in replayParsed, 'doesnt have a playlist_id')
+  t.not('playlist_name' in replayParsed, 'doesnt have a playlist_name')
+  t.is(replayParsed.overtime_seconds, 290, 'has overtime_seconds')
+});
