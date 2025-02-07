@@ -24,7 +24,7 @@ export class Camera extends S.Class<Camera>("Camera")({
 }) {}
 
 export class Ball extends S.Class<Ball>("Ball")({
-  possession_time: S.Finite,
+  possession_time: S.optional(S.Finite),
   time_in_side: S.Finite,
 }) {}
 
@@ -107,7 +107,7 @@ export class TeamReplayStats extends S.Class<TeamReplayStats>(
 )({
   color: TeamColors,
   name: S.optional(S.String),
-  players: S.Array(TeamReplayPlayer),
+  players: S.optional(S.Array(TeamReplayPlayer)),
   stats: Stats,
 }) {}
 
