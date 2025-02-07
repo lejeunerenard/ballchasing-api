@@ -3,7 +3,7 @@ import { Schema } from "effect";
 import { readFile } from "fs/promises";
 import { join } from "path";
 import { Platform } from "../../src/schema/accounts";
-import { Replay, ReplaySummary } from "../../src/schema/replay";
+import { Replay, ReplaySummary, ReplaySummaryTeamStats } from "../../src/schema/replay";
 
 const DIRNAME = new URL(".", import.meta.url).pathname;
 
@@ -40,7 +40,7 @@ test("schema replay - summary", async (t) => {
   );
 });
 
-test("schema replay - supports AI bots as players", async (t) => {
+test("schema replay summary - supports AI bots as players", async (t) => {
   const fixture = await readFile(
     join(DIRNAME, "../fixtures/replay-summary-w-bot.json"),
     "utf8",
@@ -57,6 +57,28 @@ test("schema replay - supports AI bots as players", async (t) => {
   const bot = replaySummary.orange.players[2];
   t.is(bot.name, "Caveman");
   t.alike(bot.id, {});
+});
+
+test("schema replay summary - training replay", async (t) => {
+  const fixture = await readFile(
+    join(DIRNAME, "../fixtures/replay-summary-training.json"),
+    "utf8",
+  );
+
+  const schema = ReplaySummary
+  const replay = JSON.parse(fixture);
+  t.execution(
+    Schema.decodeUnknownSync(schema)(replay, {
+      onExcessProperty: "error",
+      errors: "all",
+    }),
+  );
+  const replaySummary = Schema.decodeUnknownSync(schema)(replay);
+  t.not('playlist_id' in replaySummary, 'no playlist_id');
+  t.not('playlist_name' in replaySummary, 'no playlist_name');
+  t.not('players' in replaySummary.orange, 'no players in orange team');
+  t.alike(replaySummary.orange, new ReplaySummaryTeamStats(), 'orange team is blank');
+  t.alike(replaySummary.blue, new ReplaySummaryTeamStats({ goals: 4 }), 'blue team has only goals');
 });
 
 test("schema replay - supports training replays", async (t) => {

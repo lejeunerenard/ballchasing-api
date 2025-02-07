@@ -129,7 +129,7 @@ export class ReplaySummaryTeamStats extends S.Class<ReplaySummaryTeamStats>(
 )({
   name: S.optional(S.String),
   goals: S.optional(S.Finite),
-  players: S.Array(ReplaySummaryPlayer),
+  players: S.optional(S.Array(ReplaySummaryPlayer)),
 }) {}
 
 export class ReplaySummary extends S.Class<ReplaySummary>("ReplaySummary")({
@@ -139,10 +139,11 @@ export class ReplaySummary extends S.Class<ReplaySummary>("ReplaySummary")({
   replay_title: S.String,
   map_code: S.String,
   map_name: S.String,
-  playlist_id: S.String,
-  playlist_name: S.String,
+  playlist_id: S.optional(S.String),
+  playlist_name: S.optional(S.String),
   duration: S.Finite,
   overtime: S.Boolean,
+  overtime_seconds: S.optional(S.Finite),
   season: S.Finite,
   season_type: S.String,
   date: S.String,
@@ -155,7 +156,6 @@ export class ReplaySummary extends S.Class<ReplaySummary>("ReplaySummary")({
   groups: S.optional(S.Array(GroupStub)),
   blue: ReplaySummaryTeamStats,
   orange: ReplaySummaryTeamStats,
-  overtime_seconds: S.optional(S.Finite),
 }) {}
 
 export class ReplayCommon extends S.Class<ReplayCommon>("ReplayCommon")({

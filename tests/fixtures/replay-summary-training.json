@@ -1,0 +1,25 @@
+{
+  "id": "7e398e27-df86-479d-906b-e78660a04700",
+  "link": "https://ballchasing.com/api/replays/7e398e27-df86-479d-906b-e78660a04700",
+  "rocket_league_id": "1076F0E14A5EED4F44586FAB685C7210",
+  "replay_title": "2025-01-22.21.52 Quixtic  Win",
+  "map_code": "fni_stadium_p",
+  "map_name": "Forbidden Temple (Fire & Ice)",
+  "duration": 397,
+  "overtime": true,
+  "overtime_seconds": 290,
+  "season": 17,
+  "season_type": "free2play",
+  "date": "2025-01-22T21:52:29-06:00",
+  "date_has_tz": true,
+  "visibility": "public",
+  "created": "2025-01-23T03:56:01.086985Z",
+  "uploader": {
+    "steam_id": "76561197987055788",
+    "name": "lejeunerenard",
+    "profile_url": "https://steamcommunity.com/id/seanze/",
+    "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+  },
+  "blue": { "goals": 4 },
+  "orange": {}
+}
