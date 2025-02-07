@@ -1,19 +1,19 @@
-import { Schema as S } from "effect";
+import { Schema as S } from 'effect'
 
-export class Rank extends S.Class<Rank>("Rank")({
+export class Rank extends S.Class<Rank>('Rank')({
   tier: S.Finite,
   division: S.Finite,
   name: S.String,
-  id: S.String,
+  id: S.String
 }) {}
 
-export class Demo extends S.Class<Demo>("Demo")({
+export class Demo extends S.Class<Demo>('Demo')({
   inflicted: S.Finite,
-  taken: S.Finite,
+  taken: S.Finite
 }) {}
 
 export class StatsPositioning extends S.Class<StatsPositioning>(
-  "StatsPositioning",
+  'StatsPositioning'
 )({
   avg_distance_to_ball: S.Finite,
   avg_distance_to_ball_possession: S.Finite,
@@ -41,10 +41,10 @@ export class StatsPositioning extends S.Class<StatsPositioning>(
   percent_most_back: S.Finite,
   percent_most_forward: S.Finite,
   percent_closest_to_ball: S.Finite,
-  percent_farthest_from_ball: S.Finite,
+  percent_farthest_from_ball: S.Finite
 }) {}
 
-export class Boost extends S.Class<Boost>("Boost")({
+export class Boost extends S.Class<Boost>('Boost')({
   bpm: S.Finite,
   bcpm: S.Finite,
   avg_amount: S.Finite,
@@ -72,10 +72,10 @@ export class Boost extends S.Class<Boost>("Boost")({
   percent_boost_0_25: S.Finite,
   percent_boost_25_50: S.Finite,
   percent_boost_50_75: S.Finite,
-  percent_boost_75_100: S.Finite,
+  percent_boost_75_100: S.Finite
 }) {}
 
-export class Core extends S.Class<Core>("Core")({
+export class Core extends S.Class<Core>('Core')({
   shots: S.Finite,
   shots_against: S.Finite,
   goals: S.Finite,
@@ -84,10 +84,10 @@ export class Core extends S.Class<Core>("Core")({
   assists: S.Finite,
   score: S.Finite,
   mvp: S.optional(S.Boolean),
-  shooting_percentage: S.Finite,
+  shooting_percentage: S.Finite
 }) {}
 
-export class Movement extends S.Class<Movement>("Movement")({
+export class Movement extends S.Class<Movement>('Movement')({
   total_distance: S.Finite,
   time_supersonic_speed: S.Finite,
   time_boost_speed: S.Finite,
@@ -105,13 +105,13 @@ export class Movement extends S.Class<Movement>("Movement")({
   percent_supersonic_speed: S.Finite,
   percent_ground: S.Finite,
   percent_low_air: S.Finite,
-  percent_high_air: S.Finite,
+  percent_high_air: S.Finite
 }) {}
 
-export class StatsClass extends S.Class<StatsClass>("StatsClass")({
+export class StatsClass extends S.Class<StatsClass>('StatsClass')({
   core: Core,
   boost: Boost,
   movement: Movement,
   positioning: StatsPositioning,
-  demo: Demo,
+  demo: Demo
 }) {}

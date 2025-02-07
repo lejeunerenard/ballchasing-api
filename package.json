@@ -12,6 +12,7 @@
     "check": "tsc -b tsconfig.json",
     "test": "NODE_OPTIONS='--import=tsx' brittle tests/**/*.ts tests/*.ts",
     "lint": "prettier . --check",
+    "lint-fix": "prettier . --write",
     "changeset-version": "changeset version",
     "changeset-publish": "pnpm build && TEST_DIST= pnpm test && changeset publish"
   },

@@ -7,31 +7,31 @@ A Typescript client library for querying
 ## Usage
 
 ```typescript
-import { getClient } from "@lejeunerenard/ballchasing-api/easy";
+import { getClient } from '@lejeunerenard/ballchasing-api/easy'
 
-const client = await getClient("YOUR_AUTH_KEY");
+const client = await getClient('YOUR_AUTH_KEY')
 
 // Single Group
-const group = await client.groups.get("2v2-w-scott-2023-12-20-kunazcz10y");
-console.log("Single group", group);
+const group = await client.groups.get('2v2-w-scott-2023-12-20-kunazcz10y')
+console.log('Single group', group)
 
 // Group List
 const groups = await client.groups.list({
-  creator: "76561197987055788", // SteamID
-});
-console.log("Groups", groups);
+  creator: '76561197987055788' // SteamID
+})
+console.log('Groups', groups)
 
 // Replay list
-const meId = "epic:9152ab3ef0bd44b59de47ca639ca7010";
+const meId = 'epic:9152ab3ef0bd44b59de47ca639ca7010'
 const replays = await client.replays.list({
-  uploader: "me",
-  "player-id": [meId],
-});
-console.log("Replays", replays);
+  uploader: 'me',
+  'player-id': [meId]
+})
+console.log('Replays', replays)
 
 // Single Replay
-const replay = await client.replays.get("bdc27caf-fe82-4708-9f48-4f2561f93313");
-console.log("Replay", replay);
+const replay = await client.replays.get('bdc27caf-fe82-4708-9f48-4f2561f93313')
+console.log('Replay', replay)
 ```
 
 ## TODO
