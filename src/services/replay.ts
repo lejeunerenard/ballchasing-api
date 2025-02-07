@@ -38,30 +38,25 @@ type Playlist =
 
 type MatchResult = "win" | "loss";
 
-export type ReplayListOpts = (
-  | {
-      "player-name": string[];
-    }
-  | {
-      "player-id": string[];
-    }
-) & {
-  title?: string;
-  playlist?: Playlist[];
-  season?: string;
-  "match-result"?: MatchResult;
-  pro?: boolean;
-  uploader?: string;
-  group?: string;
-  map?: string;
-  "created-before"?: string;
-  "created-after"?: string;
-  count?: number;
-};
+export type ReplayListOpts = Partial<{
+  "player-name": string[];
+  "player-id": string[];
+  title: string;
+  playlist: Playlist[];
+  season: string;
+  "match-result": MatchResult;
+  pro: boolean;
+  uploader: string;
+  group: string;
+  map: string;
+  "created-before": string;
+  "created-after": string;
+  count: number;
+}>;
 
 export interface ReplayService {
   readonly list: (
-    opts?: ReplayListOpts,
+    opts: ReplayListOpts,
   ) => Effect.Effect<
     readonly ReplaySummary[],
     HttpClientError.HttpClientError | HttpBody.HttpBodyError | ParseError
@@ -84,10 +79,10 @@ export const makeReplayService = Effect.gen(function* () {
 
   const endpoint = "/replays";
 
-  const list = (opts?: ReplayListOpts) =>
+  const list = (opts: ReplayListOpts = {}) =>
     Effect.succeed(
       HttpClientRequest.get(endpoint).pipe(
-        HttpClientRequest.setUrlParams(opts ?? {}),
+        HttpClientRequest.setUrlParams(opts),
       ),
     ).pipe(
       Effect.flatMap(client.execute),

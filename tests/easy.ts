@@ -29,6 +29,27 @@ test("easy - list replay", async (t) => {
   const replayMocks = FastCheck.sample(Arbitrary.make(ReplaySummary), 4);
   const scope = nock(API_URL)
     .get("/replays")
+    .query({ uploader: 'me' })
+    .times(1)
+    .reply(200, { list: replayMocks });
+
+  const client = getClient("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+
+  const replays = await client.replays.list({
+    uploader: 'me'
+  });
+  t.ok(scope.isDone());
+  for (let i = 0; i < replays.length; i++) {
+    const replay = replays[i];
+    const replayMock = replayMocks[i];
+    t.is(JSON.stringify(replay), JSON.stringify(replayMock));
+  }
+});
+
+test("easy - list replay - no args required", async (t) => {
+  const replayMocks = FastCheck.sample(Arbitrary.make(ReplaySummary), 4);
+  const scope = nock(API_URL)
+    .get("/replays")
     .times(1)
     .reply(200, { list: replayMocks });
 
