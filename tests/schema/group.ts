@@ -2,7 +2,7 @@ import test from 'brittle'
 import { Schema } from 'effect'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
-import { Group, GroupSummary } from '../../src/schema/group'
+import { Group, GroupSummary } from '../../src/schema/group.js'
 
 const DIRNAME = new URL('.', import.meta.url).pathname
 

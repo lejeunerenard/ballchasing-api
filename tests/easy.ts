@@ -1,9 +1,9 @@
 import test from 'brittle'
 import nock from 'nock'
 import { Arbitrary, FastCheck } from 'effect'
-import { Replay, ReplaySummary } from '../src/schema/replay'
-import { getClient } from '../src/easy'
-import { API_URL } from '../src/constants'
+import { Replay, ReplaySummary } from '../src/schema/replay.js'
+import { getClient } from '../src/easy.js'
+import { API_URL } from '../src/constants.js'
 
 test('easy - getClient', (t) => {
   const client = getClient('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')

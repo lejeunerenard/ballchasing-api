@@ -2,12 +2,12 @@ import test from 'brittle'
 import { Schema } from 'effect'
 import { readFile } from 'fs/promises'
 import { join } from 'path'
-import { Platform } from '../../src/schema/accounts'
+import { Platform } from '../../src/schema/accounts.js'
 import {
   Replay,
   ReplaySummary,
   ReplaySummaryTeamStats
-} from '../../src/schema/replay'
+} from '../../src/schema/replay.js'
 
 const DIRNAME = new URL('.', import.meta.url).pathname
 
