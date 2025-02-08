@@ -1,12 +1,15 @@
 import { Schema as S } from 'effect'
 
-export const CannonPlatform = S.Literal('ps4', 'epic', 'steam', 'xbox', 'psynet')
+export const CannonPlatform = S.Literal(
+  'ps4',
+  'epic',
+  'steam',
+  'xbox',
+  'psynet'
+)
 export type CannonPlatform = typeof CannonPlatform.Type
 
-export const Platform = S.compose(
-  S.Lowercase,
-  CannonPlatform
-)
+export const Platform = S.compose(S.Lowercase, CannonPlatform)
 export type Platform = typeof Platform.Type
 
 export const Id = S.Struct({
