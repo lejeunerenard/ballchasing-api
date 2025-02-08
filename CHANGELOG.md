@@ -1,5 +1,11 @@
 # @lejeunerenard/ballchasing-api
 
+## 1.3.0
+
+### Minor Changes
+
+- [`d3376f8`](https://github.com/lejeunerenard/ballchasing-api/commit/d3376f839cac4454454d39bdb184fea6847ecf89) Thanks @lejeunerenard! - Export underlying CannonPlatform literal
+
 ## 1.2.0
 
 ### Minor Changes
