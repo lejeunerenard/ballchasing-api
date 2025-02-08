@@ -1,5 +1,19 @@
 # @lejeunerenard/ballchasing-api
 
+## 1.2.0
+
+### Minor Changes
+
+- [`b794530`](https://github.com/lejeunerenard/ballchasing-api/commit/b794530db67ac22634860f648f57df7dae6ff736) Thanks @lejeunerenard! - Add Training replay support to ReplaySummary schema
+
+- [`2f5f368`](https://github.com/lejeunerenard/ballchasing-api/commit/2f5f368f915bf603dd16718bc141b08e49e99b91) Thanks @lejeunerenard! - Add support for Training replays
+
+### Patch Changes
+
+- [`973ff44`](https://github.com/lejeunerenard/ballchasing-api/commit/973ff44b555a18364bce6a9f4da741a6c6336110) Thanks @lejeunerenard! - Mark options for `replay.list()` as not required
+
+- [`71d1258`](https://github.com/lejeunerenard/ballchasing-api/commit/71d125850ca1d4d9f4e77027f41b574e765b5377) Thanks @lejeunerenard! - Fix `easy`'s `client.replays.list()` argument typing
+
 ## 1.1.2
 
 ### Patch Changes
