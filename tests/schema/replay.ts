@@ -58,9 +58,14 @@ test('schema replay summary - supports AI bots as players', async (t) => {
     })
   )
   const replaySummary = Schema.decodeUnknownSync(ReplaySummary)(replay)
-  const bot = replaySummary.orange.players[2]
-  t.is(bot.name, 'Caveman')
-  t.alike(bot.id, {})
+  t.ok('players' in replaySummary.orange, 'has orange team players')
+  if (replaySummary.orange.players) {
+    const bot = replaySummary.orange.players[2]
+    t.is(bot.name, 'Caveman')
+    t.alike(bot.id, {})
+  } else {
+    t.fail('No orange players in replay-summary-w-bot.json fixture')
+  }
 })
 
 test('schema replay summary - training replay', async (t) => {
