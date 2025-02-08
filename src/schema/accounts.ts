@@ -1,8 +1,11 @@
 import { Schema as S } from 'effect'
 
+export const CannonPlatform = S.Literal('ps4', 'epic', 'steam', 'xbox', 'psynet')
+export type CannonPlatform = typeof CannonPlatform.Type
+
 export const Platform = S.compose(
   S.Lowercase,
-  S.Literal('ps4', 'epic', 'steam', 'xbox', 'psynet')
+  CannonPlatform
 )
 export type Platform = typeof Platform.Type
 
