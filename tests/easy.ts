@@ -1,6 +1,4 @@
-// @ts-expect-error: Can only be default imported
 import test from 'brittle'
-// @ts-expect-error: Can only be default imported
 import nock from 'nock'
 import { Arbitrary, FastCheck } from 'effect'
 import { Replay, ReplaySummary } from '../src/schema/replay'
