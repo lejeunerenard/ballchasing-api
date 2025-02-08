@@ -38,7 +38,8 @@ export function getClient(authKey: string) {
       },
       replays: {
         get: compose(replays.get, Effect.runPromise),
-        list: compose(replays.list, Effect.runPromise)
+        list: (opts: Replay.ReplayListOpts = {}) =>
+          replays.list(opts).pipe(Effect.runPromise)
       }
     }
   }).pipe(Effect.scoped, Effect.provide(EndpointsLive))
