@@ -44,9 +44,9 @@ test('schema group - parse api', (t) => {
       join(DIRNAME, '../fixtures/group-list.json'),
       'utf8'
     )
-    const replays = JSON.parse(fixture)
+    const groups = JSON.parse(fixture)
     t.execution(
-      Schema.decodeUnknownSync(Schema.Array(GroupSummary))(replays.list, {
+      Schema.decodeUnknownSync(Schema.Array(GroupSummary))(groups.list, {
         onExcessProperty: 'error',
         errors: 'all'
       })
