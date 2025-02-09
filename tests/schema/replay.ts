@@ -116,6 +116,28 @@ test('schema replay summary - no duration', async (t) => {
   t.not('duration' in replaySummary, 'no duration')
 })
 
+test('schema replay summary - no player name', async (t) => {
+  const fixture = await readFile(
+    join(DIRNAME, '../fixtures/replay-summary-wo-player-name.json'),
+    'utf8'
+  )
+
+  const schema = ReplaySummary
+  const replay = JSON.parse(fixture)
+  t.execution(
+    Schema.decodeUnknownSync(schema)(replay, {
+      onExcessProperty: 'error',
+      errors: 'all'
+    })
+  )
+  const replaySummary = Schema.decodeUnknownSync(schema)(replay)
+  if (!replaySummary.orange.players) {
+    return t.fail('no player name fixture doesnt have players for the orange team')
+  }
+
+  t.not('name' in replaySummary.orange.players[1], 'no player name')
+})
+
 test('schema replay - supports training replays', async (t) => {
   const fixture = await readFile(
     join(DIRNAME, '../fixtures/replay-training.json'),
