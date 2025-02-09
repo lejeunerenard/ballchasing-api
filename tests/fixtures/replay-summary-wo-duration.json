@@ -1,0 +1,38 @@
+{
+  "id": "b67620a7-c090-463f-b8a9-ad66f393a092",
+  "link": "https://ballchasing.com/api/replays/b67620a7-c090-463f-b8a9-ad66f393a092",
+  "rocket_league_id": "4170EE6642CF15258328B0B2A7CC2EC9",
+  "replay_title": "2024-08-13.22.47 Quixtic Private Loss",
+  "map_code": "outlaw_oasis_p",
+  "map_name": "Deadeye Canyon (Oasis)",
+  "playlist_id": "private",
+  "playlist_name": "Private",
+  "overtime": false,
+  "season": 15,
+  "season_type": "free2play",
+  "date": "2024-08-13T22:47:39-05:00",
+  "date_has_tz": true,
+  "visibility": "public",
+  "created": "2024-08-14T03:48:54.911191Z",
+  "uploader": {
+    "steam_id": "76561197987055788",
+    "name": "lejeunerenard",
+    "profile_url": "https://steamcommunity.com/id/seanze/",
+    "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+  },
+  "blue": {
+    "players": [
+      {
+        "start_time": 0,
+        "end_time": 0,
+        "name": "QuixMtic",
+        "id": {
+          "platform": "epic",
+          "id": "9152ab3ef0bd44b59de47ca639ca7010"
+        },
+        "score": 0
+      }
+    ]
+  },
+  "orange": {}
+}

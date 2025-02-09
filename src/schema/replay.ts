@@ -141,7 +141,7 @@ export class ReplaySummary extends S.Class<ReplaySummary>('ReplaySummary')({
   map_name: S.String,
   playlist_id: S.optional(S.String),
   playlist_name: S.optional(S.String),
-  duration: S.Finite,
+  duration: S.optional(S.Finite),
   overtime: S.Boolean,
   overtime_seconds: S.optional(S.Finite),
   season: S.Finite,

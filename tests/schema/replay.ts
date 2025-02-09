@@ -98,6 +98,24 @@ test('schema replay summary - training replay', async (t) => {
   )
 })
 
+test('schema replay summary - no duration', async (t) => {
+  const fixture = await readFile(
+    join(DIRNAME, '../fixtures/replay-summary-wo-duration.json'),
+    'utf8'
+  )
+
+  const schema = ReplaySummary
+  const replay = JSON.parse(fixture)
+  t.execution(
+    Schema.decodeUnknownSync(schema)(replay, {
+      onExcessProperty: 'error',
+      errors: 'all'
+    })
+  )
+  const replaySummary = Schema.decodeUnknownSync(schema)(replay)
+  t.not('duration' in replaySummary, 'no duration')
+})
+
 test('schema replay - supports training replays', async (t) => {
   const fixture = await readFile(
     join(DIRNAME, '../fixtures/replay-training.json'),
