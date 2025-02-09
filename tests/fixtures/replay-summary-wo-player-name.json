@@ -1,0 +1,121 @@
+{
+  "id": "f46d56c1-7df2-45b6-996f-eed44637a5cf",
+  "link": "https://ballchasing.com/api/replays/f46d56c1-7df2-45b6-996f-eed44637a5cf",
+  "rocket_league_id": "79DD962C497E081AF6E5EF9E7CDDE938",
+  "replay_title": "79DD962C497E081AF6E5EF9E7CDDE938",
+  "map_code": "chn_stadium_p",
+  "map_name": "Forbidden Temple",
+  "playlist_id": "ranked-standard",
+  "playlist_name": "Ranked Standard",
+  "duration": 372,
+  "overtime": false,
+  "season": 5,
+  "season_type": "free2play",
+  "date": "2022-02-03T23:54:20-06:00",
+  "date_has_tz": true,
+  "visibility": "unlisted",
+  "created": "2023-07-15T07:04:48.870177Z",
+  "min_rank": {
+    "tier": 6,
+    "division": 3,
+    "name": "Silver III Division 3",
+    "id": "silver-3"
+  },
+  "max_rank": {
+    "tier": 11,
+    "division": 3,
+    "name": "Platinum II Division 3",
+    "id": "platinum-2"
+  },
+  "uploader": {
+    "steam_id": "76561197987055788",
+    "name": "lejeunerenard",
+    "profile_url": "https://steamcommunity.com/id/seanze/",
+    "avatar": "https://avatars.steamstatic.com/1697ef1bdc033c4c823dc259f9491fa0dd8fdb73.jpg"
+  },
+  "blue": {
+    "goals": 4,
+    "players": [
+      {
+        "start_time": 0,
+        "end_time": 372.93655,
+        "name": "QuixMtic",
+        "id": {
+          "platform": "epic",
+          "id": "9152ab3ef0bd44b59de47ca639ca7010"
+        },
+        "mvp": true,
+        "rank": {
+          "tier": 10,
+          "division": 2,
+          "name": "Platinum I Division 2",
+          "id": "platinum-1"
+        },
+        "score": 454
+      },
+      {
+        "start_time": 0,
+        "end_time": 372.93655,
+        "name": "fajiccanicca",
+        "id": { "platform": "ps4", "id": "************" },
+        "score": 320
+      },
+      {
+        "start_time": 0,
+        "end_time": 372.93655,
+        "name": "babyruth562",
+        "id": { "platform": "xbox", "id": "b32a46dafb010900" },
+        "score": 291
+      }
+    ]
+  },
+  "orange": {
+    "goals": 3,
+    "players": [
+      {
+        "start_time": 0,
+        "end_time": 372.93655,
+        "name": "rauw alejandrod1",
+        "id": {
+          "platform": "epic",
+          "id": "f8c9c8c709db49e3be31202987650b9a"
+        },
+        "rank": {
+          "tier": 11,
+          "division": 3,
+          "name": "Platinum II Division 3",
+          "id": "platinum-2"
+        },
+        "score": 609
+      },
+      {
+        "start_time": 0,
+        "end_time": 372.93655,
+        "id": {
+          "platform": "epic",
+          "id": "ac3025ba82e84d97b572164ea059f027"
+        },
+        "rank": {
+          "tier": 10,
+          "division": 3,
+          "name": "Platinum I Division 3",
+          "id": "platinum-1"
+        },
+        "score": 446
+      },
+      {
+        "start_time": 0,
+        "end_time": 372.93655,
+        "name": "MogZ_ElMich19",
+        "id": { "platform": "ps4", "id": "MogZ_ElMich19" },
+        "rank": {
+          "tier": 6,
+          "division": 3,
+          "name": "Silver III Division 3",
+          "id": "silver-3"
+        },
+        "score": 90
+      }
+    ]
+  }
+}
