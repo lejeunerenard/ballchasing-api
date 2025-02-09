@@ -1,5 +1,13 @@
 # @lejeunerenard/ballchasing-api
 
+## 1.3.1
+
+### Patch Changes
+
+- [`386ebed`](https://github.com/lejeunerenard/ballchasing-api/commit/386ebedf23208c96a833dd5196761dd28e4555b7) Thanks @lejeunerenard! - Allow duration to be optional in ReplaySummary
+
+- [`386ebed`](https://github.com/lejeunerenard/ballchasing-api/commit/386ebedf23208c96a833dd5196761dd28e4555b7) Thanks @lejeunerenard! - Allow player names to be optional in ReplaySummary
+
 ## 1.3.0
 
 ### Minor Changes
