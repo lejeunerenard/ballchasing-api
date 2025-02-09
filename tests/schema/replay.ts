@@ -132,7 +132,9 @@ test('schema replay summary - no player name', async (t) => {
   )
   const replaySummary = Schema.decodeUnknownSync(schema)(replay)
   if (!replaySummary.orange.players) {
-    return t.fail('no player name fixture doesnt have players for the orange team')
+    return t.fail(
+      'no player name fixture doesnt have players for the orange team'
+    )
   }
 
   t.not('name' in replaySummary.orange.players[1], 'no player name')
